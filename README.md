@@ -2,7 +2,8 @@
 
 ## The Workout Tracker
 
-![The Workout Tracker Cover Photo](data/The Workout Tracker.jpg)
+
+![The Workout Tracker Cover Photo](/data/The Workout Tracker.jpg)
 
 
 ### What will the application do?
