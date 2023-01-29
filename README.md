@@ -2,6 +2,9 @@
 
 ## The Workout Tracker
 
+![The Workout Tracker Cover Photo](data/The Workout Tracker.jpg)
+
+
 ### What will the application do?
 The Workout Tracker will allow users to track the workouts they have completed and save new ones to their collection.
 In the collection their able to see their most frequent workout they go on as well as the rating they give each one. 
@@ -18,16 +21,12 @@ gym to keep fueling them to invest in themselves.
 
 
 
-User Stories:
+### User Stories
 - As a user, I want to be able to create a workout and add it to a list of workouts.
 - As a user, I want to be able to view a workout in the collection and see all the exercises in it.
 - As a user, I want to be able to edit a workout in the collection and add or delete exercises.
 - As a user, I want to be able to rate workouts in the collection.
 
-
-
-
-example of text with **bold** and *italic* fonts. 
 
 
 
