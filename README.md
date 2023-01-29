@@ -19,8 +19,15 @@ gym to keep fueling them to invest in themselves.
 
 
 User Stories:
-- item 1
-- item 2
-- item 3
+- As a user, I want to be able to create a workout and add it to a list of workouts.
+- As a user, I want to be able to view a workout in the collection and see all the exercises in it.
+- As a user, I want to be able to edit a workout in the collection and add or delete exercises.
+- As a user, I want to be able to rate workouts in the collection.
 
-An example of text with **bold** and *italic* fonts.  
+
+
+
+example of text with **bold** and *italic* fonts. 
+
+
+
