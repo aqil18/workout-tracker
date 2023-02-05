@@ -7,7 +7,7 @@
 
 
 ### What will the application do?
-The Workout Tracker will allow users to track the workouts they have completed and save new ones to their collection.
+*The Workout Tracker* will allow users to track the workouts they have completed and save new ones to their collection.
 In the collection their able to see their most frequent workout they go on as well as the rating they give each one. 
 Furthermore, if they are unsatisfied with a workout, they could edit the exercises on it or remove the workout entirely.
 
