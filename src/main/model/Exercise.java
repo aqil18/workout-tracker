@@ -24,6 +24,9 @@ public class Exercise {
     }
 
 
+    private void  editTime(int time) {
+        this.time = time;
+    }
 
 
 }
