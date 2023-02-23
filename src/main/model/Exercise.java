@@ -2,31 +2,22 @@ package model;
 
 import java.util.ArrayList;
 
-public class Exercise {
+public abstract class Exercise {
 
 
-    private String name;
-    private int time;
-    private int weight;
-    private int reps;
+    protected String name;
 
 
-
-    public Exercise(String name, int weight, int reps) {
+    //EFFECTS - Creates a new exercise object with given name.
+    public Exercise(String name) {
         this.name = name;
-        this.weight = weight;
-        this.reps = reps;
-    }
-
-    public Exercise(String name, int time) {
-        this.name = name;
-        this.time = time;
     }
 
 
-    private void  editTime(int time) {
-        this.time = time;
-    }
 
+    //Effects - Returns the name of the Exercise.
+    public String getExerciseName() {
+        return this.name;
+    }
 
 }
