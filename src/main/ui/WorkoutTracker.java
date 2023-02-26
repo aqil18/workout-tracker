@@ -42,6 +42,7 @@ public class WorkoutTracker {
 
     //EFFECTS - Processes the main menu actions between adding, deleting, editing, viewing and rating a workout from
     //          the collection.
+    @SuppressWarnings("methodlength")
     private void processMainMenu(String string)  {
         try {
             switch (string) {
@@ -87,6 +88,7 @@ public class WorkoutTracker {
 
     //REQUIRES - Non-zero size workout collection
     //EFFECTS - Edit a given workout with adding, deleting or editing exercise
+    @SuppressWarnings("methodlength")
     private void processEditWorkoutMenu(Workout workout) {
         displayWorkoutMenu();
         try {
