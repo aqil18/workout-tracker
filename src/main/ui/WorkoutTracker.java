@@ -1,9 +1,13 @@
 package ui;
 
+
 import model.*;
 
 import java.util.ArrayList;
 import java.util.Scanner;
+import exceptions.EmptyWorkoutListException;
+import exceptions.EmptyExercsieListException;
+
 
 public class WorkoutTracker {
 
@@ -38,26 +42,30 @@ public class WorkoutTracker {
 
     //EFFECTS - Processes the main menu actions between adding, deleting, editing, viewing and rating a workout from
     //          the collection.
-    private void processMainMenu(String string) {
-        switch (string) {
-            case "add":
-                collection.addWorkout(newWorkout());
-                break;
-            case "delete":
-                collection.deleteWorkout(getUserWorkout("delete"));
-                break;
-            case "edit":
-                processEditWorkoutMenu(getUserWorkout("edit"));
-                break;
-            case "rate":
-                Workout rateWorkout = getUserWorkout("rate");
-                System.out.println("Number out of 5 to rate: ");
-                int rating = input.nextInt();
-                rateWorkout.rateWorkout(rating);
-                break;
-            case "view":
-                displayWorkouts();
-                break;
+    private void processMainMenu(String string)  {
+        try {
+            switch (string) {
+                case "add":
+                    collection.addWorkout(newWorkout());
+                    break;
+                case "delete":
+                    collection.deleteWorkout(getUserWorkout("delete"));
+                    break;
+                case "edit":
+                    processEditWorkoutMenu(getUserWorkout("edit"));
+                    break;
+                case "rate":
+                    Workout rateWorkout = getUserWorkout("rate");
+                    System.out.println("Number out of 5 to rate: ");
+                    int rating = input.nextInt();
+                    rateWorkout.rateWorkout(rating);
+                    break;
+                case "view":
+                    displayWorkouts();
+                    break;
+            }
+        } catch (EmptyWorkoutListException e) {
+            System.out.println("Workout list is empty!\n ");
         }
     }
 
@@ -67,7 +75,7 @@ public class WorkoutTracker {
         return new Workout(addName);
     }
 
-    private Workout getUserWorkout(String use) {
+    private Workout getUserWorkout(String use) throws EmptyWorkoutListException {
         displayWorkouts();
         System.out.println("Number of workout to " + use + ": ");
         int index = input.nextInt() - 1;
@@ -81,25 +89,29 @@ public class WorkoutTracker {
     //EFFECTS - Edit a given workout with adding, deleting or editing exercise
     private void processEditWorkoutMenu(Workout workout) {
         displayWorkoutMenu();
-        switch (input.next()) {
-            case "add":
-                workout.addExercise(newExercise());
-                break;
-            case "delete":
-                workout.deleteExercise(getUserExercise("delete", workout));
-                break;
-            case "edit":
-                Exercise editExercise = getUserExercise("edit", workout);
-                if (editExercise instanceof WeightedExercise) {
-                    processEditWeightedExerciseMenu((WeightedExercise) editExercise);
-                } else {
-                    processEditTimedExerciseMenu((TimedExercise) editExercise);
-                }
+        try {
+            switch (input.next()) {
+                case "add":
+                    workout.addExercise(newExercise());
+                    break;
+                case "delete":
+                    workout.deleteExercise(getUserExercise("delete", workout));
+                    break;
+                case "edit":
+                    Exercise editExercise = getUserExercise("edit", workout);
+                    if (editExercise instanceof WeightedExercise) {
+                        processEditWeightedExerciseMenu((WeightedExercise) editExercise);
+                    } else {
+                        processEditTimedExerciseMenu((TimedExercise) editExercise);
+                    }
 
-                break;
-            case "view":
-                displayExercises(workout);
-                break;
+                    break;
+                case "view":
+                    displayExercises(workout);
+                    break;
+            }
+        } catch (EmptyExercsieListException e) {
+            System.out.print("Exercise list is empty!\n\n");
         }
     }
 
@@ -118,7 +130,7 @@ public class WorkoutTracker {
     }
 
 
-    private Exercise getUserExercise(String use, Workout workout) {
+    private Exercise getUserExercise(String use, Workout workout) throws EmptyExercsieListException {
         displayExercises(workout);
         System.out.println("Number of exercise to " + use + ": ");
         int index = input.nextInt() - 1;
@@ -134,11 +146,11 @@ public class WorkoutTracker {
         if (input.next().equals("weight")) {
             System.out.println("New weight: ");
             int newWeight = input.nextInt();
-            exercise.editWeight(newWeight);
+            exercise.setWeight(newWeight);
         } else if (input.next().equals("reps")) {
             System.out.println("New reps: ");
             int newReps = input.nextInt();
-            exercise.editReps(newReps);
+            exercise.setReps(newReps);
         }
     }
 
@@ -147,29 +159,36 @@ public class WorkoutTracker {
         if (input.next().equals("time")) {
             System.out.println("New time: ");
             int newTime = input.nextInt();
-            exercise.editTime(newTime);
+            exercise.setTime(newTime);
         }
     }
 
 
 
     //EFFECTS - Displays all workouts in a collection for the user to select from
-    private void displayWorkouts() {
-        ArrayList<Workout> workoutList = collection.viewWorkouts();
-
-        for (Workout w : workoutList) {
-            int index = workoutList.indexOf(w) + 1;
-            System.out.println(index + ". " + w.getWorkoutName());
+    private void displayWorkouts() throws EmptyWorkoutListException {
+        ArrayList<Workout> workoutList = collection.getWorkouts();
+        if (workoutList.size() == 0) {
+            throw new EmptyWorkoutListException();
+        } else {
+            for (Workout w : workoutList) {
+                int index = workoutList.indexOf(w) + 1;
+                System.out.println(index + ". " + w.getWorkoutName());
+            }
         }
+
     }
 
     //EFFECTS - Displays all exercises in a workout for the user to select from
-    private void displayExercises(Workout w) {
-        ArrayList<Exercise> exerciseList = w.viewExercises();
-
-        for (Exercise e : exerciseList) {
-            int index = exerciseList.indexOf(e) + 1;
-            System.out.println(index + ". " + e.getExerciseName());
+    private void displayExercises(Workout w) throws EmptyExercsieListException {
+        ArrayList<Exercise> exerciseList = w.getExercises();
+        if (exerciseList.size() == 0) {
+            throw new EmptyExercsieListException();
+        } else {
+            for (Exercise e : exerciseList) {
+                int index = exerciseList.indexOf(e) + 1;
+                System.out.println(index + ". " + e.getExerciseName());
+            }
         }
     }
 

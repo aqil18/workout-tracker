@@ -1,17 +1,16 @@
 package model;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class WorkoutCollection {
 
     private ArrayList<Workout> workouts;
 
-
+    //EFFECTS - Creates a WorkoutCollection object with an empty workout list.
     public WorkoutCollection() {
         this.workouts = new ArrayList<>();
     }
-
-
 
     //MODIFIES - This.
     //EFFECTS - Adds given workout to the workout collection
@@ -19,23 +18,18 @@ public class WorkoutCollection {
         this.workouts.add(workout);
     }
 
-
     //MODIFIES - This.
-    //EFFECTS - Deletes the workout in the given index from the workout collection
+    //EFFECTS - Deletes all instances of the given workout from the workout collection
     public void deleteWorkout(Workout workout) {
-        this.workouts.remove(workout);
+        this.workouts.removeAll(Collections.singleton(workout));
     }
 
-
-
-
     //EFFECTS - Returns all workouts in the workout collection
-    public ArrayList<Workout> viewWorkouts() {
+    public ArrayList<Workout> getWorkouts() {
         return this.workouts;
     }
 
-
-    //EFFECTS - Returns the workout at the index i in the workout collection
+    //EFFECTS - Returns the workout at the given index in the workout collection
     public Workout getWorkout(int index) {
         return this.workouts.get(index);
     }
