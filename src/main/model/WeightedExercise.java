@@ -11,12 +11,14 @@ public class WeightedExercise extends Exercise {
 
     }
 
-    public void editWeight() {
-
+    //EFFECTS - Edits the weight field
+    public void editWeight(int weight) {
+        this.weight = weight;
     }
 
-    public void editReps() {
-
+    //EFFECTS - Edits the reps field
+    public void editReps(int reps) {
+        this.reps = reps;
     }
 
 

@@ -13,7 +13,7 @@ public class Workout {
     public Workout(String name) {
         this.name = name;
         this.exercises = new ArrayList<>();
-        System.out.println("Your workout " + name + "has been created.");
+        System.out.println("Your workout " + name + " has been created.");
     }
 
 
@@ -26,15 +26,8 @@ public class Workout {
 
     //MODIFIES - This.
     //EFFECTS - Deletes the exercise in the given index from the workout list
-    public void deleteExercise() {
-
-    }
-
-
-    //MODIFIES - This.
-    //EFFECTS - Edits the exercise in the given index from the workout list
-    public void editExercise() {
-
+    public void deleteExercise(Exercise exercise) {
+        this.exercises.remove(exercise);
     }
 
 
@@ -47,8 +40,12 @@ public class Workout {
 
 
     //M
-    public void rateWorkout() {
+    public void rateWorkout(int rating) {
+        this.rating = rating;
+    }
 
+    public Exercise getExercise(int index) {
+        return this.exercises.get(index);
     }
 
     public String getWorkoutName() {

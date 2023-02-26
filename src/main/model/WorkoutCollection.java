@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class WorkoutCollection {
 
-    ArrayList<Workout> workouts;
+    private ArrayList<Workout> workouts;
 
 
     public WorkoutCollection() {
@@ -14,32 +14,29 @@ public class WorkoutCollection {
 
 
     //MODIFIES - This.
-    //EFFECTS - Adds given workout to the workout list
+    //EFFECTS - Adds given workout to the workout collection
     public void addWorkout(Workout workout) {
         this.workouts.add(workout);
     }
 
 
     //MODIFIES - This.
-    //EFFECTS - Deletes the workout in the given index from the workout list
-    public void deleteWorkout() {
-
+    //EFFECTS - Deletes the workout in the given index from the workout collection
+    public void deleteWorkout(Workout workout) {
+        this.workouts.remove(workout);
     }
 
 
-    //MODIFIES - This.
-    //EFFECTS - Edits the workout in the given index from the workout list
-    public void editWorkout() {
-
-    }
 
 
-    //MODIFIES - This.
-    //EFFECTS - Returns all exercises in the workout list
+    //EFFECTS - Returns all workouts in the workout collection
     public ArrayList<Workout> viewWorkouts() {
         return this.workouts;
     }
 
 
-
+    //EFFECTS - Returns the workout at the index i in the workout collection
+    public Workout getWorkout(int index) {
+        return this.workouts.get(index);
+    }
 }
