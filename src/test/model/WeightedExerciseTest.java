@@ -11,7 +11,7 @@ public class WeightedExerciseTest {
 
     @BeforeEach
     public void setup() {
-        weighted1 = new WeightedExercise("Dumbell curls");
+        weighted1 = new WeightedExercise("Dumbell curls", 10, 4);
     }
 
     @Test
@@ -21,13 +21,15 @@ public class WeightedExerciseTest {
 
     @Test
     public void setWeightTest() {
-        weighted1.setWeight(10);
         assertEquals(weighted1.getWeight(), 10);
+        weighted1.setWeight(50);
+        assertEquals(weighted1.getWeight(), 50);
     }
 
     @Test
     public void setRepsTest() {
-        weighted1.setReps(4);
         assertEquals(weighted1.getReps(), 4);
+        weighted1.setReps(6);
+        assertEquals(weighted1.getReps(), 6);
     }
 }

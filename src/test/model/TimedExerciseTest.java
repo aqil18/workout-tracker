@@ -13,7 +13,7 @@ public class TimedExerciseTest {
 
     @BeforeEach
     public void setup() {
-        timed1 = new TimedExercise("3 min run");
+        timed1 = new TimedExercise("3 min run", 3);
     }
 
 
@@ -21,11 +21,13 @@ public class TimedExerciseTest {
     @Test
     public void constructorTest() {
         assertEquals(timed1.getExerciseName(), "3 min run");
+        assertEquals(timed1.getTime(), 3);
     }
 
     @Test
     public void setWeightTest() {
-        timed1.setTime(3);
         assertEquals(timed1.getTime(), 3);
+        timed1.setTime(15);
+        assertEquals(timed1.getTime(), 15);
     }
 }

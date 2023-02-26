@@ -4,9 +4,10 @@ public class TimedExercise extends Exercise {
 
     private int time;
 
-    //EFFECTS - creates a Timed exercise with the given name
-    public TimedExercise(String name) {
+    //EFFECTS - creates a Timed exercise with a given name and time
+    public TimedExercise(String name, int time) {
         super(name);
+        this.time = time;
     }
 
 

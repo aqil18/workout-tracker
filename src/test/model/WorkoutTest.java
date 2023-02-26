@@ -14,8 +14,8 @@ public class WorkoutTest {
     @BeforeEach
     public void setup() {
         workout = new Workout("Back");
-        exercise1 = new WeightedExercise("Dumbell curls");
-        exercise2 = new TimedExercise("3 min run");
+        exercise1 = new WeightedExercise("Dumbell curls", 10, 4);
+        exercise2 = new TimedExercise("3 min run", 3);
 
     }
 

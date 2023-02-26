@@ -5,9 +5,11 @@ public class WeightedExercise extends Exercise {
     private int weight;
     private int reps;
 
-    //EFFECTS - creates a Weighted exercise with a given name
-    public WeightedExercise(String name) {
+    //EFFECTS - Creates a Weighted exercise with a given name, weight and reps
+    public WeightedExercise(String name, int weight, int reps) {
         super(name);
+        this.weight = weight;
+        this.reps = reps;
 
     }
 

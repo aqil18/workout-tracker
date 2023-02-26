@@ -1,5 +1,6 @@
 package model;
 
+
 import java.util.ArrayList;
 import java.util.Collections;
 
@@ -38,8 +39,8 @@ public class Workout {
     }
 
     //EFFECTS - Returns all exercises in the workout list
-    public ArrayList<Exercise> getExercises() {
-        return exercises;
+    public ArrayList<Exercise> getExercises()  {
+        return this.exercises;
     }
 
     //EFFECTS - Returns the exercise at the given index
