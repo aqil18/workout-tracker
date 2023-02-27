@@ -15,7 +15,6 @@ public class Workout {
     public Workout(String name) {
         this.name = name;
         this.exercises = new ArrayList<>();
-        System.out.println("Your workout " + name + " has been created.");
     }
 
 

@@ -10,7 +10,6 @@ public abstract class Exercise {
     //EFFECTS - Creates a new exercise object with given name.
     public Exercise(String name) {
         this.name = name;
-        System.out.println("Your exercise " + name + " has been created.");
     }
 
 

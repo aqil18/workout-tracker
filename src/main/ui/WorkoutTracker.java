@@ -23,12 +23,12 @@ public class WorkoutTracker {
 
     private void run() {
         boolean isRunning = true;
-        System.out.println("Welcome to The Workout Tracker!\n");
+        System.out.println("Welcome to The Workout Tracker!");
 
 
         while (isRunning) {
             displayCollectionMenu();
-            String process = input.next();
+            String process = input.next().toLowerCase();
 
             if (process.equals("quit")) {
                 isRunning = false;
@@ -41,7 +41,6 @@ public class WorkoutTracker {
     //EFFECTS - Processes the main menu actions between adding, deleting, editing, viewing and rating a workout from
     //          the collection.
     private void processMainMenu(String string) {
-
         switch (string) {
             case "add":
                 collection.addWorkout(newWorkout());
@@ -71,6 +70,7 @@ public class WorkoutTracker {
     private Workout newWorkout() {
         System.out.println("Name of new workout: ");
         String addName = input.next();
+        System.out.println("Your workout " + addName + " has been created.");
         return new Workout(addName);
     }
 
@@ -88,7 +88,7 @@ public class WorkoutTracker {
     //EFFECTS - Edit a given workout with adding, deleting or editing exercise
     private void processEditWorkoutMenu(Workout workout) {
         displayWorkoutMenu();
-        switch (input.next()) {
+        switch (input.next().toLowerCase()) {
             case "add":
                 workout.addExercise(newExercise());
                 break;
@@ -102,7 +102,6 @@ public class WorkoutTracker {
                 } else {
                     processEditTimedExerciseMenu((TimedExercise) editExercise);
                 }
-
                 break;
             case "view":
                 displayExercises(workout);
@@ -117,7 +116,7 @@ public class WorkoutTracker {
         System.out.println("Name of new exercise: ");
         String addName = input.next();
         System.out.println("Type 'Weighted' if it is a weighted exercise and 'Timed' if it is a timed exercise");
-        String type = input.next();
+        String type = input.next().toLowerCase();
         Exercise exercise;
         if (type.equals("weighted")) {
             exercise = newWeightedExercise(addName);
@@ -136,8 +135,9 @@ public class WorkoutTracker {
         Exercise exercise = null;
         try {
             exercise = new WeightedExercise(addName, weight, reps);
+            System.out.println("Your new weighted exercise " + addName + " has been created.");
         } catch (NonPositiveException e) {
-            System.out.println("Invalid non positive input! Fields have not been set.");
+            System.out.println("Invalid non positive input! " + addName + " has not been created.");
         }
         return exercise;
     }
@@ -148,16 +148,13 @@ public class WorkoutTracker {
         Exercise exercise = null;
         try {
             exercise = new TimedExercise(addName, time);
+            System.out.println("Your new timed exercise " + addName + " has been created.");
+
         } catch (NonPositiveException e) {
-            System.out.println("Invalid non positive input! Field has not been set.");
+            System.out.println("Invalid non positive input! " + addName + " has not been created.");
         }
         return exercise;
     }
-
-
-
-
-
 
     //REQUIRES - A user input that matches the index number of an exercise shown
     //EFFECTS - Returns an exercise in the selected workout based on user input
@@ -173,7 +170,8 @@ public class WorkoutTracker {
     //EFFECTS - Edit a given exercise fields
     private void processEditWeightedExerciseMenu(WeightedExercise exercise) {
         displayExerciseMenu("weighted");
-        if (input.next().equals("weight")) {
+        String process = input.next().toLowerCase();
+        if (process.equals("weight")) {
             System.out.println("New weight: ");
             int newWeight = input.nextInt();
             try {
@@ -181,7 +179,7 @@ public class WorkoutTracker {
             } catch (NonPositiveException e) {
                 System.out.println("Invalid non positive weight! Weight has not been set.");
             }
-        } else if (input.next().equals("reps")) {
+        } else if (process.equals("reps")) {
             System.out.println("New reps: ");
             int newReps = input.nextInt();
             try {
@@ -196,7 +194,7 @@ public class WorkoutTracker {
     //EFFECTS - Edits a given exercise fields
     private void processEditTimedExerciseMenu(TimedExercise exercise) {
         displayExerciseMenu("timed");
-        if (input.next().equals("time")) {
+        if (input.next().equalsIgnoreCase("time")) {
             System.out.println("New time: ");
             int newTime = input.nextInt();
             try {
@@ -213,7 +211,7 @@ public class WorkoutTracker {
         ArrayList<Workout> workoutList = collection.getWorkouts();
         for (Workout w : workoutList) {
             int index = workoutList.indexOf(w) + 1;
-            System.out.println(index + ". " + w.getWorkoutName());
+            System.out.println(index + ". " + w.getWorkoutName() + "  Rating: " + w.getRating() + "/5");
         }
     }
 
@@ -223,13 +221,21 @@ public class WorkoutTracker {
         ArrayList<Exercise> exerciseList = w.getExercises();
         for (Exercise e : exerciseList) {
             int index = exerciseList.indexOf(e) + 1;
-            System.out.println(index + ". " + e.getExerciseName());
+            if (e instanceof WeightedExercise) {
+                int reps = ((WeightedExercise) e).getReps();
+                int weight = ((WeightedExercise) e).getWeight();
+                System.out.println(index + ". " + e.getExerciseName() + "\n   Weight: " + weight + " Reps: " + reps);
+            } else {
+                int time = ((TimedExercise) e).getTime();
+                System.out.println(index + ". " + e.getExerciseName() + "\n   Time: " + time);
+            }
+
         }
     }
 
     //EFFECTS - Displays the operations that can be completed on a workout collection
     private void displayCollectionMenu() {
-        String line = "Select an option below by typing it in.\n "
+        String line = "\nSelect an option below by typing it in.\n "
                 + "'Add' to add a new workout.\n "
                 + "'Delete' to delete a workout.\n "
                 + "'Edit' to edit a workout.\n "
@@ -241,7 +247,7 @@ public class WorkoutTracker {
 
     //EFFECTS - Displays the operations that can be completed on a workout
     private void displayWorkoutMenu() {
-        String line = "Select an option below by typing it in.\n "
+        String line = "\nSelect an option below by typing it in.\n "
                 + "'Add' to add a new exercise.\n "
                 + "'Delete' to delete a exercise.\n "
                 + "'Edit' to edit a exercise.\n "
@@ -252,10 +258,10 @@ public class WorkoutTracker {
     //REQUIRES - Correct user input
     //EFFECTS - Displays the operations that can be completed on an exercise
     private void displayExerciseMenu(String type) {
-        System.out.println("Select an option below by typing it in.\n ");
+        System.out.println("\nSelect an option below by typing it in.\n ");
         String line;
         if (type.equals("weighted")) {
-            line = "'Reps' to change the reps of the exercise.\n "
+            line = "'Reps' to change the reps of the exercise.\n"
                     + "'Weight' to change the weight of the exercise.\n ";
         } else {
             line = "'Time' to change the length of the exercise.\n ";
