@@ -32,6 +32,7 @@ public class Workout {
         this.exercises.removeAll(Collections.singleton(exercise));
     }
 
+    //REQUIRES - Non-negative integer rating
     //MODIFIES - This
     //EFFECTS - Adds a rating to the workout
     public void rateWorkout(int rating) {

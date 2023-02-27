@@ -1,5 +1,6 @@
 package model;
 
+import exceptions.NonPositiveException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -14,8 +15,12 @@ public class WorkoutTest {
     @BeforeEach
     public void setup() {
         workout = new Workout("Back");
-        exercise1 = new WeightedExercise("Dumbell curls", 10, 4);
-        exercise2 = new TimedExercise("3 min run", 3);
+        try {
+            exercise1 = new WeightedExercise("Dumbell curls", 10, 4);
+            exercise2 = new TimedExercise("3 min run", 3);
+        } catch (NonPositiveException e) {
+            //Exceptions do not need to be tested here.
+        }
 
     }
 
