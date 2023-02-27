@@ -1,11 +1,9 @@
 package model;
 
-
-
-
 import java.util.ArrayList;
 import java.util.Collections;
 
+// Represents a WorkoutCollection as a list of workouts
 public class WorkoutCollection {
 
     private ArrayList<Workout> workouts;
@@ -15,13 +13,13 @@ public class WorkoutCollection {
         this.workouts = new ArrayList<>();
     }
 
-    //MODIFIES - This.
+    //MODIFIES - This
     //EFFECTS - Adds given workout to the workout collection
     public void addWorkout(Workout workout) {
         this.workouts.add(workout);
     }
 
-    //MODIFIES - This.
+    //MODIFIES - This
     //EFFECTS - Deletes all instances of the given workout from the workout collection
     public void deleteWorkout(Workout workout) {
         this.workouts.removeAll(Collections.singleton(workout));
@@ -32,7 +30,7 @@ public class WorkoutCollection {
         return this.workouts;
     }
 
-    //EFFECTS - Returns the workout at the given index in the workout collection
+    //EFFECTS - Returns the workout at the given index from the workout collection
     public Workout getWorkout(int index) {
         return this.workouts.get(index);
     }

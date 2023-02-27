@@ -28,6 +28,7 @@ gym to keep fueling them to invest in themselves.
 - As a user, I want to be able to edit a workout in the collection and add or delete exercises.
 - As a user, I want to be able to rate workouts in the collection.
 
-
+### Attributions
+- The UI in this application draws inspiration from how the TellerApp given to us built its UI.
 
 

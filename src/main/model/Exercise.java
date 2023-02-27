@@ -1,6 +1,6 @@
 package model;
 
-
+// Represents an Exercise having a name
 public abstract class Exercise {
 
 
@@ -11,8 +11,6 @@ public abstract class Exercise {
     public Exercise(String name) {
         this.name = name;
     }
-
-
 
     //EFFECTS - Returns the name of the Exercise.
     public String getExerciseName() {

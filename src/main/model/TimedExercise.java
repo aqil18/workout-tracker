@@ -2,6 +2,7 @@ package model;
 
 import exceptions.NonPositiveException;
 
+// Represents a TimedExercise as an Exercise with time
 public class TimedExercise extends Exercise {
 
     private int time;

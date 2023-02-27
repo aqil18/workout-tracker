@@ -7,20 +7,20 @@ import model.*;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-
+// Workout Tracker application
 public class WorkoutTracker {
 
 
     WorkoutCollection collection;
     Scanner input;
 
-
+    //EFFECTS - Starts the workout tracker by running the setup and run methods
     public WorkoutTracker() {
         setup();
         run();
     }
 
-
+    //EFFECTS - Initiates the processing loop
     private void run() {
         boolean isRunning = true;
         System.out.println("Welcome to The Workout Tracker!");
@@ -38,7 +38,8 @@ public class WorkoutTracker {
         }
     }
 
-    //EFFECTS - Processes the main menu actions between adding, deleting, editing, viewing and rating a workout from
+    //REQUIRES - Non-zero size workout list when editing or deleting.
+    //EFFECTS - Processes the main menu actions between adding, deleting, editing, rating and viewing workouts from
     //          the collection.
     private void processMainMenu(String string) {
         switch (string) {
@@ -65,7 +66,7 @@ public class WorkoutTracker {
     }
 
 
-    //REQUIRES - Non-zero length string and no spaces in between words from user input
+    //REQUIRES - addName.length > 0
     //EFFECTS - Creates and returns new workout with a given name
     private Workout newWorkout() {
         System.out.println("Name of new workout: ");
@@ -74,7 +75,7 @@ public class WorkoutTracker {
         return new Workout(addName);
     }
 
-    //REQUIRES - A user input that matches the index number of a workout shown
+    //REQUIRES - 0 < index <  collection.workouts.length()
     //EFFECTS - Returns a workout in the collection based on user input
     private Workout getUserWorkout(String use) {
         displayWorkouts();
@@ -84,8 +85,9 @@ public class WorkoutTracker {
     }
 
 
-    //REQUIRES - Non-zero size workout collection
-    //EFFECTS - Edit a given workout with adding, deleting or editing exercise
+    //REQUIRES - Non-zero size exercise list when editing or deleting.
+    //EFFECTS - Processes the edit workout menu actions between adding, deleting, editing and viewing exercises from
+    //          the workout.
     private void processEditWorkoutMenu(Workout workout) {
         displayWorkoutMenu();
         switch (input.next().toLowerCase()) {
@@ -110,8 +112,8 @@ public class WorkoutTracker {
 
     }
 
-    //REQUIRES - Correct user input
-    //EFFECTS - Creates a new weighted or timed exercise with a respective name and fields
+    //REQUIRES - addName.length() > 0
+    //EFFECTS -  Returns a new weighted or timed exercise with a given name and fields
     private Exercise newExercise() {
         System.out.println("Name of new exercise: ");
         String addName = input.next();
@@ -126,7 +128,7 @@ public class WorkoutTracker {
         return exercise;
     }
 
-
+    //EFFECTS - Creates and returns a new weighted exercise with a given name and fields.
     private Exercise newWeightedExercise(String addName) {
         System.out.println("Type in the weight in kg of the exercise: ");
         int weight = input.nextInt();
@@ -142,6 +144,7 @@ public class WorkoutTracker {
         return exercise;
     }
 
+    //EFFECTS - Creates and returns a new timed exercise with a given name and fields.
     private Exercise newTimedExercise(String addName) {
         System.out.println("Type in the length in minutes of the exercise: ");
         int time = input.nextInt();
@@ -156,7 +159,7 @@ public class WorkoutTracker {
         return exercise;
     }
 
-    //REQUIRES - A user input that matches the index number of an exercise shown
+    //REQUIRES - 0 < index <  workout.exercises.length()
     //EFFECTS - Returns an exercise in the selected workout based on user input
     private Exercise getUserExercise(String use, Workout workout) {
         displayExercises(workout);
@@ -166,8 +169,8 @@ public class WorkoutTracker {
     }
 
 
-    //REQUIRES - Non-zero size exercise list
-    //EFFECTS - Edit a given exercise fields
+    //EFFECTS - Processes the edit weighted exercise menu actions between changing reps and weight for weighted
+    //          exercises
     private void processEditWeightedExerciseMenu(WeightedExercise exercise) {
         displayExerciseMenu("weighted");
         String process = input.next().toLowerCase();
@@ -190,8 +193,7 @@ public class WorkoutTracker {
         }
     }
 
-    //REQUIRES - Non-zero size exercise list
-    //EFFECTS - Edits a given exercise fields
+    //EFFECTS - Processes the edit timed exercise menu actions to change time for timed exercises
     private void processEditTimedExerciseMenu(TimedExercise exercise) {
         displayExerciseMenu("timed");
         if (input.next().equalsIgnoreCase("time")) {
@@ -205,8 +207,7 @@ public class WorkoutTracker {
         }
     }
 
-
-    //EFFECTS - Displays all workouts in a collection for the user to select from
+    //EFFECTS - Displays all workouts and respective rating in a collection for the user to select from
     private void displayWorkouts() {
         ArrayList<Workout> workoutList = collection.getWorkouts();
         for (Workout w : workoutList) {
@@ -215,8 +216,7 @@ public class WorkoutTracker {
         }
     }
 
-
-    //EFFECTS - Displays all exercises in a workout for the user to select from
+    //EFFECTS - Displays all exercises and respective fields in a workout for the user to select from
     private void displayExercises(Workout w) {
         ArrayList<Exercise> exerciseList = w.getExercises();
         for (Exercise e : exerciseList) {
@@ -255,7 +255,6 @@ public class WorkoutTracker {
         System.out.println(line);
     }
 
-    //REQUIRES - Correct user input
     //EFFECTS - Displays the operations that can be completed on an exercise
     private void displayExerciseMenu(String type) {
         System.out.println("\nSelect an option below by typing it in.\n ");

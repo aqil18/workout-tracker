@@ -2,6 +2,7 @@ package model;
 
 import exceptions.NonPositiveException;
 
+// Represents a WeightedExercise as an Exercise with reps and weight
 public class WeightedExercise extends Exercise {
 
     private int weight;
@@ -12,7 +13,6 @@ public class WeightedExercise extends Exercise {
         super(name);
         setWeight(weight);
         setReps(reps);
-
     }
 
     //MODIFIES - This

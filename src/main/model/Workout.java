@@ -4,19 +4,17 @@ package model;
 import java.util.ArrayList;
 import java.util.Collections;
 
+// Represents a workout as a list of exercises with a name and rating
 public class Workout {
     private ArrayList<Exercise> exercises;
     private String name;
     private int rating;
-
-
 
     //EFFECTS - Creates an empty list of exercises with a given name
     public Workout(String name) {
         this.name = name;
         this.exercises = new ArrayList<>();
     }
-
 
     //MODIFIES - This
     //EFFECTS - Adds given exercise to the workout list
@@ -33,7 +31,7 @@ public class Workout {
 
     //REQUIRES - Non-negative integer rating
     //MODIFIES - This
-    //EFFECTS - Adds a rating to the workout
+    //EFFECTS - Edits the rating of the workout
     public void rateWorkout(int rating) {
         this.rating = rating;
     }
@@ -53,6 +51,7 @@ public class Workout {
         return name;
     }
 
+    //EFFECTS - Returns the rating of the workout
     public Integer getRating() {
         return rating;
     }
