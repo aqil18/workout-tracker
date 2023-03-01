@@ -27,6 +27,8 @@ gym to keep fueling them to invest in themselves.
 - As a user, I want to be able to view a workout in the collection and see all the exercises in it.
 - As a user, I want to be able to edit a workout in the collection and add or delete exercises.
 - As a user, I want to be able to rate workouts in the collection.
+- As a user, I want to be given the option to save all my workouts and respective exercises upon closing.
+- As a user, I want to be given the option to load all my saved workouts and respective exercises upon opening.
 
 ### Attributions
 - The UI in this application draws inspiration from how the TellerApp given to us built its UI.
