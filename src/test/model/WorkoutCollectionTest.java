@@ -1,5 +1,6 @@
 package model;
 
+import exceptions.EmptyWorkoutList;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -24,13 +25,22 @@ class WorkoutCollectionTest {
 
     @Test
     public void constructorTest() {
-        assertEquals(collection.getWorkouts().size(), 0);
+        try {
+            collection.getWorkouts().size();
+            fail("Expected EmptyWorkoutList exception to be thrown.");
+        } catch (EmptyWorkoutList e) {
+            //Exception thrown.
+        }
     }
 
     @Test
     public void addSingleWorkoutTest() {
         collection.addWorkout(workout1);
-        assertEquals(collection.getWorkouts().size(), 1);
+        try {
+            assertEquals(collection.getWorkouts().size(), 1);
+        } catch (EmptyWorkoutList e) {
+            fail("Unexpected EmptyWorkoutList exception.");
+        }
         assertEquals(collection.getWorkout(0), workout1);
     }
 
@@ -40,7 +50,11 @@ class WorkoutCollectionTest {
         collection.addWorkout(workout1);
         collection.addWorkout(workout3);
 
-        assertEquals(collection.getWorkouts().size(), 3);
+        try {
+            assertEquals(collection.getWorkouts().size(), 3);
+        } catch (EmptyWorkoutList e) {
+            fail("Unexpected EmptyWorkoutList exception.");
+        }
         assertEquals(collection.getWorkout(0), workout2);
         assertEquals(collection.getWorkout(1), workout1);
         assertEquals(collection.getWorkout(2), workout3);
@@ -54,10 +68,13 @@ class WorkoutCollectionTest {
         collection.addWorkout(workout2);
 
         collection.deleteWorkout(workout3);
-        assertEquals(collection.getWorkouts().size(), 1);
+        try {
+            assertEquals(collection.getWorkouts().size(), 1);
+        } catch (EmptyWorkoutList e) {
+            fail("Unexpected EmptyWorkoutList exception.");
+        }
         assertEquals(collection.getWorkout(0), workout2);
 
     }
-
 
 }

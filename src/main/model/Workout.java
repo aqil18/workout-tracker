@@ -1,6 +1,8 @@
 package model;
 
 
+import exceptions.EmptyExerciseList;
+
 import java.util.ArrayList;
 import java.util.Collections;
 
@@ -37,7 +39,10 @@ public class Workout {
     }
 
     //EFFECTS - Returns all exercises in the workout list
-    public ArrayList<Exercise> getExercises()  {
+    public ArrayList<Exercise> getExercises()  throws EmptyExerciseList {
+        if (this.exercises.size() == 0) {
+            throw new EmptyExerciseList();
+        }
         return this.exercises;
     }
 

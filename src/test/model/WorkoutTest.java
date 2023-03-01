@@ -1,10 +1,12 @@
 package model;
 
+import exceptions.EmptyExerciseList;
 import exceptions.NonPositiveException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.fail;
 
 public class WorkoutTest {
 
@@ -26,14 +28,23 @@ public class WorkoutTest {
 
     @Test
     public void constructorTest() {
-        assertEquals(workout.getExercises().size(), 0);
+    try {
+        workout.getExercises().size();
+        fail("Expected EmptyExerciseList exception to be thrown.");
+    } catch (EmptyExerciseList e) {
         assertEquals(workout.getWorkoutName(), "Back");
+    }
+
     }
 
     @Test
     public void addSingleExerciseTest() {
         workout.addExercise(exercise1);
-        assertEquals(workout.getExercises().size(), 1);
+        try {
+            assertEquals(workout.getExercises().size(), 1);
+        } catch (EmptyExerciseList e) {
+            fail("Unexpected EmptyExerciseList exception.");
+        }
         assertEquals(workout.getExercise(0), exercise1);
     }
 
@@ -43,7 +54,11 @@ public class WorkoutTest {
         workout.addExercise(exercise2);
         workout.addExercise(exercise1);
 
-        assertEquals(workout.getExercises().size(), 3);
+        try {
+            assertEquals(workout.getExercises().size(), 3);
+        } catch (EmptyExerciseList e) {
+            fail("Unexpected EmptyExerciseList exception.");
+        }
         assertEquals(workout.getExercise(0), exercise1);
         assertEquals(workout.getExercise(1), exercise2);
         assertEquals(workout.getExercise(2), exercise1);
@@ -57,7 +72,11 @@ public class WorkoutTest {
         workout.addExercise(exercise2);
 
         workout.deleteExercise(exercise2);
-        assertEquals(workout.getExercises().size(), 1);
+        try {
+            assertEquals(workout.getExercises().size(), 1);
+        } catch (EmptyExerciseList e) {
+            fail("Unexpected EmptyExerciseList exception.");
+        }
         assertEquals(workout.getExercise(0), exercise1);
 
     }
