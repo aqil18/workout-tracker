@@ -5,6 +5,9 @@ import exceptions.EmptyExerciseList;
 import exceptions.EmptyWorkoutList;
 import exceptions.NonPositiveException;
 import model.*;
+import persistence.JsonReader;
+import persistence.JsonWriter;
+import persistence.WorkRoom;
 
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -12,9 +15,12 @@ import java.util.Scanner;
 // Workout Tracker application
 public class WorkoutTracker {
 
-
+    private static final  String JSON_STORE = "./data/workroom.json";
     WorkoutCollection collection;
     Scanner input;
+    WorkRoom workroom;
+    JsonReader jsonReader;
+    JsonWriter jsonWriter;
 
     //EFFECTS - Starts the workout tracker by running the setup and run methods
     public WorkoutTracker() {
@@ -37,6 +43,8 @@ public class WorkoutTracker {
             } else {
                 processMainMenu(process);
             }
+
+            System.out.println("Thank you for using The Workout Tracker!");
         }
     }
 
@@ -282,6 +290,9 @@ public class WorkoutTracker {
     private void setup() {
         input = new Scanner(System.in);
         collection = new WorkoutCollection();
+        workroom = new WorkRoom("User Workroom");
+        jsonReader = new JsonReader(JSON_STORE);
+        jsonWriter = new JsonWriter(JSON_STORE);
     }
 
 
