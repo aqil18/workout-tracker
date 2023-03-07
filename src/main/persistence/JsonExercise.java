@@ -5,8 +5,11 @@ import org.json.JSONObject;
 // Represents a thingy having a name and a category
 public class JsonExercise implements Writable {
     private String name;
-    private JsonWeighted jsonWeighted;
-    private JsonTimed jsonTimed;
+    private boolean isWeighted;
+    private int weight;
+    private int reps;
+    private int time;
+
 
     // EFFECTS: constructs a thingy with a name and category
     public JsonExercise(String name) {
@@ -27,7 +30,13 @@ public class JsonExercise implements Writable {
     public JSONObject toJson() {
         JSONObject json = new JSONObject();
         json.put("name", name);
-        json.put("category", category);
+        json.put("isWeighted", isWeighted);
+        if (isWeighted) {
+            json.put("weight", weight);
+            json.put("reps", reps);
+        } else {
+            json.put("time", time);
+        }
         return json;
     }
 }

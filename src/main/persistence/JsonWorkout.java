@@ -15,8 +15,9 @@ public class JsonWorkout implements Writable {
     private List<JsonExercise> exerciseThingies;
 
     // EFFECTS: constructs a thingy with a name and category
-    public JsonWorkout(String name) {
+    public JsonWorkout(String name, int rating) {
         this.name = name;
+        this.rating = rating;
         this.exerciseThingies = new ArrayList<>();
     }
 
@@ -64,8 +65,8 @@ public class JsonWorkout implements Writable {
     private JSONArray exercisesToJson() {
         JSONArray jsonArray = new JSONArray();
 
-        for (JsonExercise t : exerciseThingies) {
-            jsonArray.put(t.toJson());
+        for (JsonExercise e : exerciseThingies) {
+            jsonArray.put(e.toJson());
         }
         return jsonArray;
     }

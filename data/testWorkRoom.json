@@ -3,11 +3,31 @@
     {
       "exercises" : [
         {
-          "name": "Row"
+          "name": "Row",
+          "isWeighted": true,
+          "weight" : 5,
+          "reps" : 4
+        },
+        {
+          "name": "Spread",
+          "isWeighted": false,
+          "time": 40
         }
       ],
       "name": "Back",
       "rating": 5
+    },
+    {
+      "exercises" : [
+        {
+          "name": "Bench",
+          "isWeighted": true,
+          "weight" : 10,
+          "reps" : 5
+        }
+      ],
+      "name": "Chest",
+      "rating": 3
     }
   ]
 }

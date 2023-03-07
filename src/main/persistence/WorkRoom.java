@@ -9,22 +9,16 @@ import java.util.List;
 
 // Represents a workroom having a collection of thingies
 public class WorkRoom implements Writable {
-    private String name;
     private List<JsonWorkout> workoutThingies;
 
     // EFFECTS: constructs workroom with a name and empty list of thingies
-    public WorkRoom(String name) {
-        this.name = name;
+    public WorkRoom() {
         workoutThingies = new ArrayList<>();
-    }
-
-    public String getName() {
-        return name;
     }
 
     // MODIFIES: this
     // EFFECTS: adds jsonWorkout to this workroom
-    public void addThingy(JsonWorkout jsonWorkout) {
+    public void addWorkout(JsonWorkout jsonWorkout) {
         workoutThingies.add(jsonWorkout);
     }
 
@@ -41,17 +35,16 @@ public class WorkRoom implements Writable {
     @Override
     public JSONObject toJson() {
         JSONObject json = new JSONObject();
-        json.put("name", name);
-        json.put("thingies", thingiesToJson());
+        json.put("workouts", workoutsToJson());
         return json;
     }
 
     // EFFECTS: returns things in this workroom as a JSON array
-    private JSONArray thingiesToJson() {
+    private JSONArray workoutsToJson() {
         JSONArray jsonArray = new JSONArray();
 
-        for (JsonWorkout t : workoutThingies) {
-            jsonArray.put(t.toJson());
+        for (JsonWorkout w : workoutThingies) {
+            jsonArray.put(w.toJson());
         }
 
         return jsonArray;
