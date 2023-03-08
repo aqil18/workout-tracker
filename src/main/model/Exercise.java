@@ -20,11 +20,6 @@ public abstract class Exercise implements Writable {
         return this.name;
     }
 
-    // EFFECTS: returns string representation of this thingy
-    public String toString() {
-        return category + ": " + name;
-    }
-
 
     @Override
     public abstract JSONObject toJson();

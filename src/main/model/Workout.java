@@ -65,12 +65,6 @@ public class Workout implements Writable {
         return rating;
     }
 
-    // EFFECTS: returns string representation of this thingy
-    public String toString() {
-        return category + ": " + name;
-    }
-
-
 
     @Override
     public JSONObject toJson() {
