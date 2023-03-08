@@ -82,7 +82,7 @@ public class JsonReader {
     private void addJsonExercise(Workout workout, JSONObject jsonObject) throws NonPositiveException {
         String name = jsonObject.getString("name");
 
-        Exercise exercise = null;
+        Exercise exercise;
         if (jsonObject.has("weight")) {
             int weight = jsonObject.getInt("weight");
             int reps = jsonObject.getInt("reps");
