@@ -3,6 +3,7 @@ package persistence;
 
 import exceptions.EmptyExerciseList;
 import exceptions.EmptyWorkoutList;
+import exceptions.NonPositiveException;
 import model.*;
 import org.junit.jupiter.api.Test;
 
@@ -24,6 +25,8 @@ public class JsonReaderTest extends JsonTest{
             fail("IOException expected");
         } catch (IOException e) {
             // pass
+        } catch (NonPositiveException e) {
+            fail("Unexpected NonPositiveException thrown.");
         }
     }
 
@@ -40,6 +43,8 @@ public class JsonReaderTest extends JsonTest{
             }
         } catch (IOException e) {
             fail("Couldn't read from file");
+        } catch (NonPositiveException e) {
+            fail("Unexpected NonPositiveException thrown.");
         }
     }
 
@@ -58,6 +63,8 @@ public class JsonReaderTest extends JsonTest{
             }
         } catch (IOException e) {
             fail("Couldn't read from file");
+        } catch (NonPositiveException e) {
+            fail("Unexpected NonPositiveException thrown.");
         }
     }
 
@@ -79,8 +86,27 @@ public class JsonReaderTest extends JsonTest{
             }
         } catch (IOException e) {
             fail("Couldn't read from file");
+        } catch (NonPositiveException e) {
+            fail("Unexpected NonPositiveException thrown.");
         }
 
     }
+
+    @Test
+    public void testReaderNonPositiveExercises() {
+        JsonReader reader = new JsonReader("./data/testReaderNonPositiveExercises.json");
+
+        try {
+            WorkoutCollection collection = reader.read();
+            fail("Expected NonPositiveException to be thrown.");
+        } catch (IOException e) {
+            fail("Couldn't read from file");
+        } catch (NonPositiveException e) {
+            // pass
+        }
+
+    }
+
+
 
 }

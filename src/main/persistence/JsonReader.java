@@ -22,7 +22,7 @@ public class JsonReader {
 
     // EFFECTS: reads workroom from file and returns it;
     // throws IOException if an error occurs reading data from file
-    public WorkoutCollection read() throws IOException {
+    public WorkoutCollection read() throws IOException, NonPositiveException {
         String jsonData = readFile(source);
         JSONObject jsonObject = new JSONObject(jsonData);
         return parseWorkoutCollection(jsonObject);
@@ -41,7 +41,7 @@ public class JsonReader {
 
 
     // EFFECTS: parses Workout Collection from JSON object and returns it
-    private WorkoutCollection parseWorkoutCollection(JSONObject jsonObject) {
+    private WorkoutCollection parseWorkoutCollection(JSONObject jsonObject) throws NonPositiveException {
         WorkoutCollection wc = new WorkoutCollection();
         addJsonWorkouts(wc, jsonObject);
         return wc;
@@ -49,7 +49,7 @@ public class JsonReader {
 
     // MODIFIES: wc
     // EFFECTS: parses workouts from JSON object and adds them to workroom
-    private void addJsonWorkouts(WorkoutCollection wc, JSONObject jsonObject) {
+    private void addJsonWorkouts(WorkoutCollection wc, JSONObject jsonObject) throws NonPositiveException {
         JSONArray jsonArray = jsonObject.getJSONArray("workouts");
         for (Object json : jsonArray) {
             JSONObject nextWorkout = (JSONObject) json;
@@ -59,7 +59,7 @@ public class JsonReader {
 
     // MODIFIES: wc
     // EFFECTS: parses workout from JSON object and adds it to workroom
-    private void addJsonWorkout(WorkoutCollection wc, JSONObject jsonObject) {
+    private void addJsonWorkout(WorkoutCollection wc, JSONObject jsonObject) throws NonPositiveException {
         String name = jsonObject.getString("name");
         int rating = jsonObject.getInt("rating");
 
@@ -70,7 +70,7 @@ public class JsonReader {
     }
 
 
-    private void addJsonExercises(Workout workout, JSONObject jsonObject) {
+    private void addJsonExercises(Workout workout, JSONObject jsonObject) throws NonPositiveException {
         JSONArray jsonArray = jsonObject.getJSONArray("exercises");
         for (Object json : jsonArray) {
             JSONObject nextExercise = (JSONObject) json;
@@ -79,27 +79,20 @@ public class JsonReader {
     }
 
 
-    private void addJsonExercise(Workout workout, JSONObject jsonObject) {
+    private void addJsonExercise(Workout workout, JSONObject jsonObject) throws NonPositiveException {
         String name = jsonObject.getString("name");
 
         Exercise exercise = null;
         if (jsonObject.has("weight")) {
             int weight = jsonObject.getInt("weight");
             int reps = jsonObject.getInt("reps");
-            try {
-                exercise = new WeightedExercise(name, weight, reps);
-            } catch (NonPositiveException e) {
-                //Ignored as there is no way Non-positive can be stored in the first place
-            }
+
+            exercise = new WeightedExercise(name, weight, reps);
         } else {
             int time = jsonObject.getInt("time");
-            try {
-                exercise = new TimedExercise(name, time);
-            } catch (NonPositiveException e) {
-                //Ignored as there is no way Non-positive can be stored in the first place
-            }
+            exercise = new TimedExercise(name, time);
         }
+
         workout.addExercise(exercise);
     }
-
 }

@@ -318,6 +318,8 @@ public class WorkoutTracker {
             System.out.println("Loaded all workouts from " + JSON_STORE);
         } catch (IOException e) {
             System.out.println("Unable to read from file: " + JSON_STORE);
+        } catch (NonPositiveException e) {
+            System.out.println("Unable to load workouts due to non-positive weight/reps/time input(s).");
         }
     }
 
