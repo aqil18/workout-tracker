@@ -16,7 +16,7 @@ public class WorkoutTest {
 
     @BeforeEach
     public void setup() {
-        workout = new Workout("Back");
+        workout = new Workout("Back", 5);
         try {
             exercise1 = new WeightedExercise("Dumbell curls", 10, 4);
             exercise2 = new TimedExercise("3 min run", 3);
@@ -33,6 +33,7 @@ public class WorkoutTest {
         fail("Expected EmptyExerciseList exception to be thrown.");
     } catch (EmptyExerciseList e) {
         assertEquals(workout.getWorkoutName(), "Back");
+        assertEquals(workout.getRating(), 5);
     }
 
     }
@@ -84,8 +85,8 @@ public class WorkoutTest {
 
     @Test
     public void rateWorkoutTest() {
-        workout.rateWorkout(5);
-        assertEquals(workout.getRating(), 5);
+        workout.rateWorkout(3);
+        assertEquals(workout.getRating(), 3);
     }
 
 

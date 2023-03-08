@@ -30,7 +30,7 @@ public class JsonWriterTest extends JsonTest {
             workout1.addExercise(exercise1);
             workout1.addExercise(exercise2);
             workout1.addExercise(exercise3);
-            WorkoutCollection generalCollection = new WorkoutCollection();
+            generalCollection = new WorkoutCollection();
             generalCollection.addWorkout(workout1);
             generalCollection.addWorkout(workout2);
         } catch (NonPositiveException e) {
@@ -52,7 +52,7 @@ public class JsonWriterTest extends JsonTest {
     }
 
     @Test
-    void testWriterEmptyWorkroom() {
+    void testWriterEmptyCollection() {
         try {
             WorkoutCollection collection = new WorkoutCollection();
             JsonWriter writer = new JsonWriter("./data/testWriterEmptyCollection.json");
@@ -60,7 +60,7 @@ public class JsonWriterTest extends JsonTest {
             writer.write(collection);
             writer.close();
 
-            JsonReader reader = new JsonReader("./data/testWriterEmptyWorkroom.json");
+            JsonReader reader = new JsonReader("./data/testWriterEmptyCollection.json");
             collection = reader.read();
             try {
                 collection.getWorkouts();

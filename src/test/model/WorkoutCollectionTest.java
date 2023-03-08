@@ -17,9 +17,9 @@ class WorkoutCollectionTest {
     @BeforeEach
     public void setup() {
         collection = new WorkoutCollection();
-        workout1 = new Workout("Back");
-        workout2 = new Workout("Leg");
-        workout3 = new Workout("Chest");
+        workout1 = new Workout("Back", 5);
+        workout2 = new Workout("Leg",3);
+        workout3 = new Workout("Chest", 4);
 
     }
 
