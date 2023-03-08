@@ -1,6 +1,7 @@
 package model;
 
 import exceptions.NonPositiveException;
+import org.json.JSONObject;
 
 // Represents a TimedExercise as an Exercise with time
 public class TimedExercise extends Exercise {
@@ -28,4 +29,11 @@ public class TimedExercise extends Exercise {
         return time;
     }
 
+    @Override
+    public JSONObject toJson() {
+        JSONObject json = new JSONObject();
+        json.put("name", name);
+        json.put("time", time);
+        return json;
+    }
 }

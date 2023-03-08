@@ -1,5 +1,6 @@
 package persistence;
 
+import model.WorkoutCollection;
 import org.json.JSONObject;
 
 
@@ -25,8 +26,8 @@ public class JsonWriter {
 
     // MODIFIES: this
     // EFFECTS: writes JSON representation of workroom to file
-    public void write(WorkRoom wr) {
-        JSONObject json = wr.toJson();
+    public void write(WorkoutCollection wc) {
+        JSONObject json = wc.toJson();
         saveToFile(json.toString(TAB));
     }
 

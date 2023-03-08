@@ -7,7 +7,6 @@ import exceptions.NonPositiveException;
 import model.*;
 import persistence.JsonReader;
 import persistence.JsonWriter;
-import persistence.WorkRoom;
 
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -18,7 +17,6 @@ public class WorkoutTracker {
     private static final  String JSON_STORE = "./data/workroom.json";
     WorkoutCollection collection;
     Scanner input;
-    WorkRoom workroom;
     JsonReader jsonReader;
     JsonWriter jsonWriter;
 
@@ -83,8 +81,10 @@ public class WorkoutTracker {
     private Workout newWorkout() {
         System.out.println("Name of new workout: ");
         String addName = input.next();
+        System.out.println("Rating of workout out of 5: ");
+        int rating = input.nextInt();
         System.out.println("Your workout " + addName + " has been created.");
-        return new Workout(addName);
+        return new Workout(addName, rating);
     }
 
     //REQUIRES - 0 < index <  collection.workouts.length()
@@ -290,7 +290,6 @@ public class WorkoutTracker {
     private void setup() {
         input = new Scanner(System.in);
         collection = new WorkoutCollection();
-        workroom = new WorkRoom("User Workroom");
         jsonReader = new JsonReader(JSON_STORE);
         jsonWriter = new JsonWriter(JSON_STORE);
     }

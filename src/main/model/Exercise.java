@@ -1,7 +1,10 @@
 package model;
 
+import org.json.JSONObject;
+import persistence.Writable;
+
 // Represents an Exercise having a name
-public abstract class Exercise {
+public abstract class Exercise implements Writable {
 
 
     protected String name;
@@ -16,5 +19,14 @@ public abstract class Exercise {
     public String getExerciseName() {
         return this.name;
     }
+
+    // EFFECTS: returns string representation of this thingy
+    public String toString() {
+        return category + ": " + name;
+    }
+
+
+    @Override
+    public abstract JSONObject toJson();
 
 }

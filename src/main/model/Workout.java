@@ -2,20 +2,24 @@ package model;
 
 
 import exceptions.EmptyExerciseList;
+import org.json.JSONArray;
+import org.json.JSONObject;
+import persistence.Writable;
 
 import java.util.ArrayList;
 import java.util.Collections;
 
 // Represents a workout as a list of exercises with a name and rating
-public class Workout {
+public class Workout implements Writable {
     private ArrayList<Exercise> exercises;
     private String name;
     private int rating;
 
     //EFFECTS - Creates an empty list of exercises with a given name
-    public Workout(String name) {
+    public Workout(String name, int rating) {
         this.name = name;
         this.exercises = new ArrayList<>();
+        this.rating = rating;
     }
 
     //MODIFIES - This
@@ -60,6 +64,34 @@ public class Workout {
     public Integer getRating() {
         return rating;
     }
+
+    // EFFECTS: returns string representation of this thingy
+    public String toString() {
+        return category + ": " + name;
+    }
+
+
+
+    @Override
+    public JSONObject toJson() {
+        JSONObject json = new JSONObject();
+        json.put("name", name);
+        json.put("exercises", exercisesToJson());
+        json.put("rating", rating);
+
+        return json;
+    }
+
+    // EFFECTS: returns exercises in JsonWorkout as a JSON array
+    private JSONArray exercisesToJson() {
+        JSONArray jsonArray = new JSONArray();
+
+        for (Exercise e : exercises) {
+            jsonArray.put(e.toJson());
+        }
+        return jsonArray;
+    }
+
 
 
 }

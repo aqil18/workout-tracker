@@ -1,6 +1,7 @@
 package model;
 
 import exceptions.NonPositiveException;
+import org.json.JSONObject;
 
 // Represents a WeightedExercise as an Exercise with reps and weight
 public class WeightedExercise extends Exercise {
@@ -44,6 +45,15 @@ public class WeightedExercise extends Exercise {
     //EFFECTS - Returns the reps
     public int getReps() {
         return reps;
+    }
+
+    @Override
+    public JSONObject toJson() {
+        JSONObject json = new JSONObject();
+        json.put("name", name);
+        json.put("weight", weight);
+        json.put("reps", reps);
+        return json;
     }
 
 }
