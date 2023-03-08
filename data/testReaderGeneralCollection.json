@@ -1,0 +1,38 @@
+{"workouts": [
+    {
+        "exercises": [
+            {
+                "reps": 4,
+                "name": "Rows",
+                "weight": 10
+            },
+            {
+                "name": "Extensions",
+                "time": 30
+            }
+        ],
+        "name": "Back",
+        "rating": 4
+    },
+    {
+        "exercises": [
+            {
+                "reps": 8,
+                "name": "Bicep-Curls",
+                "weight": 12
+            },
+            {
+                "reps": 8,
+                "name": "Hammer-Curls",
+                "weight": 10
+            },
+            {
+                "reps": 12,
+                "name": "Tricep-Pushdown",
+                "weight": 8
+            }
+        ],
+        "name": "Arms",
+        "rating": 5
+    }
+]}

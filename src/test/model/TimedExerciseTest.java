@@ -11,11 +11,6 @@ public class TimedExerciseTest {
 
     TimedExercise timed1;
 
-
-
-
-
-
     @Test
     public void constructorTest() {
         //Exception would not be thrown here

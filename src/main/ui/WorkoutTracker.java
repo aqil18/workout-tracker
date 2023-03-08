@@ -16,7 +16,7 @@ import java.util.Scanner;
 // Workout Tracker application
 public class WorkoutTracker {
 
-    private static final  String JSON_STORE = "./data/workroom.json";
+    private static final  String JSON_STORE = "./data/workoutCollection.json";
     WorkoutCollection collection;
     Scanner input;
     JsonReader jsonReader;
@@ -43,9 +43,8 @@ public class WorkoutTracker {
             } else {
                 processMainMenu(process);
             }
-
-            System.out.println("Thank you for using The Workout Tracker!");
         }
+        System.out.println("Thank you for using The Workout Tracker!");
     }
 
     //EFFECTS - Processes the main menu actions between adding, deleting, editing, rating and viewing workouts from

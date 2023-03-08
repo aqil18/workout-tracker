@@ -57,7 +57,6 @@ public class WorkoutCollection implements Writable {
         for (Workout w : workouts) {
             jsonArray.put(w.toJson());
         }
-
         return jsonArray;
     }
 

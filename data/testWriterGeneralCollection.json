@@ -1,0 +1,27 @@
+{"workouts": [
+    {
+        "exercises": [
+            {
+                "reps": 8,
+                "name": "Bicep-Curls",
+                "weight": 12
+            },
+            {
+                "reps": 8,
+                "name": "Hammer-Curls",
+                "weight": 10
+            },
+            {
+                "name": "Cardio",
+                "time": 20
+            }
+        ],
+        "name": "Arms",
+        "rating": 5
+    },
+    {
+        "exercises": [],
+        "name": "Back",
+        "rating": 4
+    }
+]}
