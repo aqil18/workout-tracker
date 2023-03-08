@@ -40,7 +40,7 @@ public class JsonWriterTest extends JsonTest {
     }
 
     @Test
-    void testWriterInvalidFile() {
+    public void testWriterInvalidFile() {
         try {
             WorkoutCollection collection = new WorkoutCollection();
             JsonWriter writer = new JsonWriter("./data/my\0illegal:fileName.json");
@@ -52,7 +52,7 @@ public class JsonWriterTest extends JsonTest {
     }
 
     @Test
-    void testWriterEmptyCollection() {
+   public void testWriterEmptyCollection() {
         try {
             WorkoutCollection collection = new WorkoutCollection();
             JsonWriter writer = new JsonWriter("./data/testWriterEmptyCollection.json");
@@ -75,7 +75,7 @@ public class JsonWriterTest extends JsonTest {
     }
 
     @Test
-    void testWriterGeneralWorkouts() {
+    public void testWriterGeneralWorkouts() {
         try {
             JsonWriter writer = new JsonWriter("./data/testWriterGeneralCollection.json");
             writer.open();
