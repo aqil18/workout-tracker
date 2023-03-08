@@ -65,7 +65,6 @@ public class Workout implements Writable {
         return rating;
     }
 
-
     @Override
     public JSONObject toJson() {
         JSONObject json = new JSONObject();

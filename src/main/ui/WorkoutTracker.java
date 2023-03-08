@@ -8,6 +8,8 @@ import model.*;
 import persistence.JsonReader;
 import persistence.JsonWriter;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -68,6 +70,12 @@ public class WorkoutTracker {
                     break;
                 case "view":
                     displayWorkouts();
+                    break;
+                case "load":
+                    loadWorkoutCollection();
+                    break;
+                case "save":
+                    saveWorkoutCollection();
                     break;
             }
         } catch (EmptyWorkoutList e) {
@@ -259,6 +267,8 @@ public class WorkoutTracker {
                 + "'Edit' to edit a workout.\n "
                 + "'Rate' to rate a workout. \n "
                 + "'View' to view all workouts.\n "
+                + "'Load' previous workout collection.\n "
+                + "'Save' current workout collection.\n "
                 + "'Quit' to quit the workout tracker.\n ";
         System.out.println(line);
     }
@@ -285,6 +295,32 @@ public class WorkoutTracker {
         }
         System.out.println(line);
     }
+
+
+    // EFFECTS: saves the workroom to file
+    private void saveWorkoutCollection() {
+        try {
+            jsonWriter.open();
+            jsonWriter.write(collection);
+            jsonWriter.close();
+            System.out.println("Saved all workouts to " + JSON_STORE);
+        } catch (FileNotFoundException e) {
+            System.out.println("Unable to write to file: " + JSON_STORE);
+        }
+    }
+
+
+    // MODIFIES: this
+    // EFFECTS: loads workroom from file
+    private void loadWorkoutCollection() {
+        try {
+            collection = jsonReader.read();
+            System.out.println("Loaded all workouts from " + JSON_STORE);
+        } catch (IOException e) {
+            System.out.println("Unable to read from file: " + JSON_STORE);
+        }
+    }
+
 
     //EFFECTS - Initializes workout tracker
     private void setup() {
