@@ -38,19 +38,28 @@ public class WorkoutTracker {
             displayCollectionMenu();
             String process = input.next().toLowerCase();
 
-            if (process.equals("quit")) {
-                isRunning = false;
-            } else {
-                processMainMenu(process);
+            switch (process) {
+                case "quit":
+                    isRunning = false;
+                    break;
+                case "load":
+                    loadWorkoutCollection();
+                    break;
+                case "save":
+                    saveWorkoutCollection();
+                    break;
+                default:
+                    processCollectionMenu(process);
+                    break;
             }
         }
         System.out.println("Thank you for using The Workout Tracker!");
     }
 
+
     //EFFECTS - Processes the main menu actions between adding, deleting, editing, rating and viewing workouts from
     //          the collection.
-    @SuppressWarnings("methodlength")
-    private void processMainMenu(String string) {
+    private void processCollectionMenu(String string) {
         try {
             switch (string) {
                 case "add":
@@ -64,18 +73,10 @@ public class WorkoutTracker {
                     break;
                 case "rate":
                     Workout rateWorkout = getUserWorkout("rate");
-                    System.out.println("Number out of 5 to rate: ");
-                    int rating = input.nextInt();
-                    rateWorkout.rateWorkout(rating);
+                    rateWorkout(rateWorkout);
                     break;
                 case "view":
                     displayWorkouts();
-                    break;
-                case "load":
-                    loadWorkoutCollection();
-                    break;
-                case "save":
-                    saveWorkoutCollection();
                     break;
             }
         } catch (EmptyWorkoutList e) {
@@ -105,9 +106,16 @@ public class WorkoutTracker {
 
     }
 
+    //EFFECTS - Rates workout based on user input
+    private void rateWorkout(Workout rateWorkout) {
+        System.out.println("Number out of 5 to rate: ");
+        int rating = input.nextInt();
+        rateWorkout.rateWorkout(rating);
+    }
+
+
     //EFFECTS - Processes the edit workout menu actions between adding, deleting, editing and viewing exercises from
     //          the workout.
-    @SuppressWarnings("methodlength")
     private void processEditWorkoutMenu(Workout workout) {
         displayWorkoutMenu();
         try {
@@ -120,11 +128,7 @@ public class WorkoutTracker {
                     break;
                 case "edit":
                     Exercise editExercise = getUserExercise("edit", workout);
-                    if (editExercise instanceof WeightedExercise) {
-                        processEditWeightedExerciseMenu((WeightedExercise) editExercise);
-                    } else {
-                        processEditTimedExerciseMenu((TimedExercise) editExercise);
-                    }
+                    processEditExercise(editExercise);
                     break;
                 case "view":
                     displayExercises(workout);
@@ -189,6 +193,15 @@ public class WorkoutTracker {
         System.out.println("Number of exercise to " + use + ": ");
         int index = input.nextInt() - 1;
         return workout.getExercise(index);
+    }
+
+    //EFFECTS - Edits exercise based on whether it is weighted or timed
+    private void processEditExercise(Exercise exercise) {
+        if (exercise instanceof WeightedExercise) {
+            processEditWeightedExerciseMenu((WeightedExercise) exercise);
+        } else {
+            processEditTimedExerciseMenu((TimedExercise) exercise);
+        }
     }
 
 
