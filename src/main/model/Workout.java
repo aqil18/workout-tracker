@@ -75,7 +75,7 @@ public class Workout implements Writable {
         return json;
     }
 
-    // EFFECTS: returns exercises in JsonWorkout as a JSON array
+    // EFFECTS: returns exercises in workout as a JSON array
     private JSONArray exercisesToJson() {
         JSONArray jsonArray = new JSONArray();
 

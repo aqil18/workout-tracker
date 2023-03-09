@@ -297,7 +297,7 @@ public class WorkoutTracker {
     }
 
 
-    // EFFECTS: saves the workroom to file
+    // EFFECTS: saves the workout collection to file
     private void saveWorkoutCollection() {
         try {
             jsonWriter.open();
@@ -311,7 +311,7 @@ public class WorkoutTracker {
 
 
     // MODIFIES: this
-    // EFFECTS: loads workroom from file
+    // EFFECTS: loads workout collection from file
     private void loadWorkoutCollection() {
         try {
             collection = jsonReader.read();

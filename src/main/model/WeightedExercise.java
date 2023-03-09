@@ -55,5 +55,4 @@ public class WeightedExercise extends Exercise {
         json.put("reps", reps);
         return json;
     }
-
 }

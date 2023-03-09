@@ -1,22 +1,16 @@
 package persistence;
 
-
-
 import model.TimedExercise;
 import model.WeightedExercise;
 import model.Workout;
 
-
-import java.util.Optional;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
-
 
 public class JsonTest {
 
     protected void checkWorkout(String name, int rating, Workout workout) {
         assertEquals(name, workout.getWorkoutName());
-        assertEquals(Optional.of(rating), Optional.of(workout.getRating()));
+        assertEquals(rating, workout.getRating());
     }
 
     protected void checkWeightedExercise(String name, int weight, int reps, WeightedExercise exercise) {
@@ -29,5 +23,4 @@ public class JsonTest {
         assertEquals(name, exercise.getExerciseName());
         assertEquals(time, exercise.getTime());
     }
-
 }

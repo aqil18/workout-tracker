@@ -1,8 +1,6 @@
 package persistence;
 
-import exceptions.EmptyExerciseList;
-import exceptions.EmptyWorkoutList;
-import exceptions.NonPositiveException;
+import exceptions.*;
 import model.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -125,5 +123,4 @@ public class JsonWriterTest extends JsonTest {
             fail("Unexpected NonPositiveException thrown.");
         }
     }
-
 }

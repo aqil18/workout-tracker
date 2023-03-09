@@ -50,7 +50,7 @@ public class WorkoutCollection implements Writable {
         return json;
     }
 
-    // EFFECTS: returns things in this workroom as a JSON array
+    // EFFECTS: returns workouts in this workout collection as a JSON array
     private JSONArray workoutsToJson() {
         JSONArray jsonArray = new JSONArray();
 

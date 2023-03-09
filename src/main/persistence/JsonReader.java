@@ -10,7 +10,7 @@ import exceptions.NonPositiveException;
 import model.*;
 import org.json.*;
 
-// Represents a reader that reads workroom from JSON data stored in file
+// Represents a reader that reads workout collection from JSON data stored in file
 public class JsonReader {
     private String source;
 
@@ -20,7 +20,7 @@ public class JsonReader {
     }
 
 
-    // EFFECTS: reads workroom from file and returns it;
+    // EFFECTS: reads workout collection from file and returns it;
     // throws IOException if an error occurs reading data from file
     public WorkoutCollection read() throws IOException, NonPositiveException {
         String jsonData = readFile(source);
@@ -40,36 +40,37 @@ public class JsonReader {
     }
 
 
-    // EFFECTS: parses Workout Collection from JSON object and returns it
+    // EFFECTS: parses workout collection from JSON object and returns it
     private WorkoutCollection parseWorkoutCollection(JSONObject jsonObject) throws NonPositiveException {
-        WorkoutCollection wc = new WorkoutCollection();
-        addJsonWorkouts(wc, jsonObject);
-        return wc;
+        WorkoutCollection collection = new WorkoutCollection();
+        addJsonWorkouts(collection, jsonObject);
+        return collection;
     }
 
-    // MODIFIES: wc
-    // EFFECTS: parses workouts from JSON object and adds them to workroom
-    private void addJsonWorkouts(WorkoutCollection wc, JSONObject jsonObject) throws NonPositiveException {
+    // MODIFIES: collection
+    // EFFECTS: parses workouts from JSON object and adds them to the collection
+    private void addJsonWorkouts(WorkoutCollection collection, JSONObject jsonObject) throws NonPositiveException {
         JSONArray jsonArray = jsonObject.getJSONArray("workouts");
         for (Object json : jsonArray) {
             JSONObject nextWorkout = (JSONObject) json;
-            addJsonWorkout(wc, nextWorkout);
+            addJsonWorkout(collection, nextWorkout);
         }
     }
 
-    // MODIFIES: wc
-    // EFFECTS: parses workout from JSON object and adds it to workroom
-    private void addJsonWorkout(WorkoutCollection wc, JSONObject jsonObject) throws NonPositiveException {
+    // MODIFIES: collection
+    // EFFECTS: parses workout from JSON object and adds it to the collection
+    private void addJsonWorkout(WorkoutCollection collection, JSONObject jsonObject) throws NonPositiveException {
         String name = jsonObject.getString("name");
         int rating = jsonObject.getInt("rating");
 
         Workout workout = new Workout(name, rating);
         addJsonExercises(workout, jsonObject);
-        wc.addWorkout(workout);
+        collection.addWorkout(workout);
 
     }
 
-
+    // MODIFIES: workout
+    // EFFECTS: parses exercises from JSON object and adds them to the workout
     private void addJsonExercises(Workout workout, JSONObject jsonObject) throws NonPositiveException {
         JSONArray jsonArray = jsonObject.getJSONArray("exercises");
         for (Object json : jsonArray) {
@@ -78,7 +79,8 @@ public class JsonReader {
         }
     }
 
-
+    // MODIFIES: workout
+    // EFFECTS: parses exercise from JSON object and add it to the workout
     private void addJsonExercise(Workout workout, JSONObject jsonObject) throws NonPositiveException {
         String name = jsonObject.getString("name");
 

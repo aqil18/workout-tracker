@@ -25,6 +25,7 @@ public class TimedExercise extends Exercise {
         }
     }
 
+    //EFFECTS - Returns the time field
     public int getTime() {
         return time;
     }

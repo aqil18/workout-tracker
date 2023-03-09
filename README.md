@@ -32,3 +32,4 @@ gym to keep fueling them to invest in themselves.
 
 ### Attributions
 - The UI in this application draws inspiration from how the TellerApp given to us built its UI.
+- The data persistence feature is modeled based on the JsonSerialization project given to us. 
