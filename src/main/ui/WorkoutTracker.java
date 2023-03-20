@@ -8,13 +8,17 @@ import model.*;
 import persistence.JsonReader;
 import persistence.JsonWriter;
 
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
 // Workout Tracker application
-public class WorkoutTracker {
+public class WorkoutTracker implements ActionListener {
 
     private static final  String JSON_STORE = "./data/workoutCollection.json";
     WorkoutCollection collection;
@@ -22,10 +26,46 @@ public class WorkoutTracker {
     JsonReader jsonReader;
     JsonWriter jsonWriter;
 
+    int count = 0;
+    JLabel label;
+    JFrame frame;
+    JButton button;
+    JPanel panel;
+
     //EFFECTS - Starts the workout tracker by running the setup and run methods
     public WorkoutTracker() {
         setup();
+
+        frame = new JFrame();
+        panel = new JPanel();
+        button = new JButton("Add New Workout");
+        label = new JLabel("Number of workouts: 0");
+
+        button.addActionListener(this);
+
+
+        panel.setBorder(BorderFactory.createEmptyBorder(30, 30, 10, 30));
+        panel.setLayout(new GridLayout(0, 1));
+        panel.add(button);
+        panel.add(label);
+
+
+
+        frame.add(panel, BorderLayout.CENTER);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setTitle("Workout Tracker");
+        frame.pack();
+        frame.setVisible(true);
+
         run();
+
+
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        count++;
+        label.setText("Number of workouts: " + count);
     }
 
     //EFFECTS - Initiates the processing loop
