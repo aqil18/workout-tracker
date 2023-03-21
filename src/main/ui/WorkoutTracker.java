@@ -26,36 +26,37 @@ public class WorkoutTracker implements ActionListener {
     JsonReader jsonReader;
     JsonWriter jsonWriter;
 
-    int count = 0;
     JLabel label;
-    JFrame frame;
+    JFrame home;
+    JFrame addW;
     JButton button;
-    JPanel panel;
+    JPanel homePanel;
+    JPanel addPanel;
 
     //EFFECTS - Starts the workout tracker by running the setup and run methods
     public WorkoutTracker() {
         setup();
 
-        frame = new JFrame();
-        panel = new JPanel();
+        home = new JFrame();
+        homePanel = new JPanel();
         button = new JButton("Add New Workout");
         label = new JLabel("Number of workouts: 0");
 
         button.addActionListener(this);
 
 
-        panel.setBorder(BorderFactory.createEmptyBorder(30, 30, 10, 30));
-        panel.setLayout(new GridLayout(0, 1));
-        panel.add(button);
-        panel.add(label);
+        homePanel.setBorder(BorderFactory.createEmptyBorder(100, 50, 100, 100));
+        homePanel.setLayout(new GridLayout(0, 1));
+        homePanel.add(button);
+        homePanel.add(label);
 
 
 
-        frame.add(panel, BorderLayout.CENTER);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setTitle("Workout Tracker");
-        frame.pack();
-        frame.setVisible(true);
+        home.add(homePanel, BorderLayout.CENTER);
+        home.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        home.setTitle("Workout Tracker");
+        home.pack();
+        home.setVisible(true);
 
         run();
 
@@ -64,8 +65,22 @@ public class WorkoutTracker implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        count++;
-        label.setText("Number of workouts: " + count);
+        addW = new JFrame();
+        addPanel = new JPanel();
+        addPanel.setBorder(BorderFactory.createEmptyBorder(100, 50, 100, 50));
+        addPanel.setLayout(new GridLayout(0, 1));
+        addW.add(addPanel, BorderLayout.CENTER);
+
+        addW.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        addW.setTitle("Workout Tracker");
+        addW.pack();
+        addW.setVisible(true);
+
+
+
+        Workout newW = new Workout("w", 5);
+        collection.addWorkout(newW);
+        label.setText("Number of workouts: " + collection.getNumWorkouts());
     }
 
     //EFFECTS - Initiates the processing loop
