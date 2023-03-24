@@ -4,7 +4,7 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class WorkoutTrackerUi extends JDialog {
+public class GuiWorkoutTracker extends JFrame {
     private JPanel homePanel;
     private JButton addButton;
     private JButton viewButton;
@@ -13,20 +13,25 @@ public class WorkoutTrackerUi extends JDialog {
 
 
 
-    public WorkoutTrackerUi() {
+    public GuiWorkoutTracker() {
         setContentPane(homePanel);
         setSize(500, 500);
 
         addButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
+                AddWorkoutUi addWorkoutFrame = new AddWorkoutUi();
+                setVisible(false); // Hide the current frame
+                addWorkoutFrame.setVisible(true); // Show the new frame
             }
         });
+
         viewButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
+                ViewWorkoutsUI viewWorkoutsFrame = new ViewWorkoutsUI();
+                setVisible(false); // Hide the current frame
+                viewWorkoutsFrame.setVisible(true); // Show the new frame
             }
         });
         loadWorkoutsButton.addActionListener(new ActionListener() {
@@ -45,7 +50,7 @@ public class WorkoutTrackerUi extends JDialog {
     }
 
     public static void main(String[] args) {
-        WorkoutTrackerUi workoutTrackerUi = new WorkoutTrackerUi();
-        workoutTrackerUi.setVisible(true);
+        GuiWorkoutTracker guiWorkoutTracker = new GuiWorkoutTracker();
+        guiWorkoutTracker.setVisible(true);
     }
 }
