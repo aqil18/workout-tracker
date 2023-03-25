@@ -16,6 +16,7 @@ public class HomeUi extends JFrame {
     private JButton loadWorkoutsButton;
     private JButton saveButton;
     private JButton deleteButton;
+    private JLabel titleLabel;
 
     private WorkoutCollection collection;
     private GuiWorkoutTracker gui;
@@ -31,19 +32,22 @@ public class HomeUi extends JFrame {
         this.gui = gui;
         this.currentFrame = this;
 
+
+        ImageIcon icon = new ImageIcon("data/The Workout Tracker.jpg");
+        titleLabel.setIcon(icon);
+        titleLabel.setText("");
+
+
+
         setContentPane(homePanel);
         setSize(500, 500);
         setVisible(true);
 
         addListener();
-        //deleteListener();
+        deleteListener();
         viewListener();
         loadListener();
         saveListener();
-
-
-
-
 
 
 
@@ -56,6 +60,17 @@ public class HomeUi extends JFrame {
                 AddWorkoutUi addWorkoutFrame = new AddWorkoutUi(collection, currentFrame);
                 setVisible(false); // Hide the current frame
                 addWorkoutFrame.setVisible(true); // Show the new frame
+            }
+        });
+    }
+
+    public void deleteListener() {
+        deleteButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                DeleteWorkoutUi deleteWorkoutUi = new DeleteWorkoutUi(collection, currentFrame);
+                setVisible(false); // Hide the current frame
+                deleteWorkoutUi.setVisible(true); // Show the new frame
             }
         });
     }
