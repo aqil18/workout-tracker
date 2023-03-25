@@ -5,18 +5,14 @@ import exceptions.EmptyExerciseList;
 import exceptions.EmptyWorkoutList;
 import exceptions.NonPositiveException;
 import model.*;
-import persistence.JsonReader;
-import persistence.JsonWriter;
 
-import java.io.FileNotFoundException;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
 // Workout Tracker application
 public class ConsoleWorkoutTracker extends WorkoutTracker {
 
-    Scanner input = new Scanner(System.in);
+    private Scanner input = new Scanner(System.in);
 
     //EFFECTS - Starts the workout tracker by running the setup and run methods
     public ConsoleWorkoutTracker() {

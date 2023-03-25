@@ -11,12 +11,17 @@ import java.io.IOException;
 public class WorkoutTracker {
 
     private static final  String JSON_STORE = "./data/workoutCollection.json";
-    WorkoutCollection collection;
-    JsonReader jsonReader;
-    JsonWriter jsonWriter;
-    // EFFECTS: saves the workout collection to file
+    protected WorkoutCollection collection;
+    protected JsonReader jsonReader;
+    protected JsonWriter jsonWriter;
 
-    protected void saveWorkoutCollection() {
+
+    public WorkoutTracker() {
+
+    }
+
+    // EFFECTS: saves the workout collection to file
+    public void saveWorkoutCollection() {
         try {
             jsonWriter.open();
             jsonWriter.write(collection);
@@ -27,10 +32,9 @@ public class WorkoutTracker {
         }
     }
 
-
     // MODIFIES: this
     // EFFECTS: loads workout collection from file
-    protected void loadWorkoutCollection() {
+    public void loadWorkoutCollection() {
         try {
             collection = jsonReader.read();
             System.out.println("Loaded all workouts from " + JSON_STORE);
@@ -43,11 +47,14 @@ public class WorkoutTracker {
 
 
     //EFFECTS - Initializes workout tracker
-    protected void setup() {
+    public void setup() {
         collection = new WorkoutCollection();
         jsonReader = new JsonReader(JSON_STORE);
         jsonWriter = new JsonWriter(JSON_STORE);
     }
 
+    public WorkoutCollection getCollection() {
+        return collection;
+    }
 
 }
