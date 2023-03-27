@@ -38,9 +38,6 @@ public class WorkoutCollection implements Writable {
         return workouts;
     }
 
-    public int getNumWorkouts() {
-        return workouts.size();
-    }
 
 
     //EFFECTS - Returns the workout at the given index from the workout collection

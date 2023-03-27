@@ -1,8 +1,5 @@
 package ui;
 
-
-import ui.gui.HomeUi;
-
 public class Main  {
 
     //EFFECTS - Creates a new Workout Tracker object

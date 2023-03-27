@@ -9,12 +9,17 @@ import java.awt.event.ActionListener;
 
 public class AddWorkoutUi extends JFrame {
     private JTextField nameField;
-    private JTextField ratingField;
     private JButton addButton;
     private JPanel addPanel;
+    private JSpinner ratingSpinner;
+    SpinnerNumberModel spinner = (SpinnerNumberModel) ratingSpinner.getModel();
 
     WorkoutCollection collection;
     HomeUi homeFrame;
+
+    private static final int MAX_RATING = 5;
+    private static final int MIN_RATING = 0;
+    private static final int STEP_RATING = 1;
 
     public AddWorkoutUi(WorkoutCollection collection, HomeUi homeFrame) {
         this.collection = collection;
@@ -22,7 +27,18 @@ public class AddWorkoutUi extends JFrame {
         setContentPane(addPanel);
         setSize(500, 500);
 
+
+
+        spinner.setMinimum(MIN_RATING);
+        spinner.setMaximum(MAX_RATING);
+        spinner.setStepSize(STEP_RATING);
+
         addListener();
+
+
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+
 
 
 
@@ -33,7 +49,7 @@ public class AddWorkoutUi extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 String name = nameField.getText();
-                int rating = Integer.parseInt(ratingField.getText());
+                int rating = (int) spinner.getNumber();
                 Workout workout = new Workout(name, rating);
                 collection.addWorkout(workout);
                 dispose();

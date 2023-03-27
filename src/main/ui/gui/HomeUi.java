@@ -18,7 +18,6 @@ public class HomeUi extends JFrame {
     private JButton deleteButton;
     private JLabel titleLabel;
 
-    private WorkoutCollection collection;
     private GuiWorkoutTracker gui;
     private HomeUi currentFrame;
 
@@ -28,7 +27,6 @@ public class HomeUi extends JFrame {
 
 
     public HomeUi(GuiWorkoutTracker gui) {
-        collection = gui.getCollection();
         this.gui = gui;
         this.currentFrame = this;
 
@@ -40,7 +38,7 @@ public class HomeUi extends JFrame {
 
 
         setContentPane(homePanel);
-        setSize(500, 500);
+        setSize(1000, 1000);
         setVisible(true);
 
         addListener();
@@ -49,6 +47,7 @@ public class HomeUi extends JFrame {
         loadListener();
         saveListener();
 
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 
     }
@@ -57,7 +56,7 @@ public class HomeUi extends JFrame {
         addButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                AddWorkoutUi addWorkoutFrame = new AddWorkoutUi(collection, currentFrame);
+                AddWorkoutUi addWorkoutFrame = new AddWorkoutUi(gui.getCollection(), currentFrame);
                 setVisible(false); // Hide the current frame
                 addWorkoutFrame.setVisible(true); // Show the new frame
             }
@@ -68,7 +67,7 @@ public class HomeUi extends JFrame {
         deleteButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                DeleteWorkoutUi deleteWorkoutUi = new DeleteWorkoutUi(collection, currentFrame);
+                DeleteWorkoutUi deleteWorkoutUi = new DeleteWorkoutUi(gui.getCollection(), currentFrame);
                 setVisible(false); // Hide the current frame
                 deleteWorkoutUi.setVisible(true); // Show the new frame
             }
@@ -79,7 +78,7 @@ public class HomeUi extends JFrame {
         viewButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                ViewWorkoutsUI viewWorkoutsFrame = new ViewWorkoutsUI(collection, currentFrame);
+                ViewWorkoutsUI viewWorkoutsFrame = new ViewWorkoutsUI(gui.getCollection(), currentFrame);
                 setVisible(false); // Hide the current frame
                 viewWorkoutsFrame.setVisible(true); // Show the new frame
             }

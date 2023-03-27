@@ -17,6 +17,7 @@ public class DeleteWorkoutUi extends JFrame {
     private JScrollPane scrollPane;
     private JPanel labelPanel;
     private JPanel viewPanel;
+    private JButton closeButton;
 
 
     WorkoutCollection collection;
@@ -27,7 +28,7 @@ public class DeleteWorkoutUi extends JFrame {
         this.collection = collection;
         this.homeFrame = homeFrame;
 
-        deleteButton.setVisible(!deleteButton.isVisible());
+
 
         setContentPane(viewPanel);
         setSize(500, 500);
@@ -35,6 +36,7 @@ public class DeleteWorkoutUi extends JFrame {
         scrollPane.setViewportView(labelPanel); // Adds the panel as the viewport of the scroll pane
 
         addLabels();
+        closeListener();
 
 
     }
@@ -49,7 +51,7 @@ public class DeleteWorkoutUi extends JFrame {
                     public void mouseClicked(MouseEvent e) {
                         System.out.println(label.getText());
                         deleteButton.setText("Delete " + workout.getWorkoutName());
-                        deleteButton.setVisible(!deleteButton.isVisible());
+
                         deleteListener(workout);
                     }
                 });
@@ -78,5 +80,16 @@ public class DeleteWorkoutUi extends JFrame {
             }
         });
     }
+
+    public void closeListener() {
+        closeButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                dispose();
+                homeFrame.setVisible(true);
+            }
+        });
+    }
+
 }
 
