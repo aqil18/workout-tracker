@@ -12,6 +12,7 @@ public class ExerciseUi extends JFrame {
     private JButton addButton;
     private JButton deleteButton;
     private JButton viewButton;
+    private JPanel homePanel;
 
     Workout workout;
     private ExerciseUi currentFrame;
@@ -21,6 +22,11 @@ public class ExerciseUi extends JFrame {
         this.currentFrame = this;
         this.workout = workout;
         this.homeFrame = homeFrame;
+
+
+        setContentPane(homePanel);
+        setSize(1000, 1000);
+        setVisible(true);
 
         addListener();
         deleteListener();
