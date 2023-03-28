@@ -1,7 +1,7 @@
 package ui;
 
 
-import ui.gui.HomeUi;
+import ui.gui.workout.WorkoutUi;
 
 
 public class GuiWorkoutTracker extends WorkoutTracker {
@@ -9,7 +9,7 @@ public class GuiWorkoutTracker extends WorkoutTracker {
 
     public GuiWorkoutTracker() {
         setup();
-        new HomeUi(this);
+        new WorkoutUi(this);
     }
 
 

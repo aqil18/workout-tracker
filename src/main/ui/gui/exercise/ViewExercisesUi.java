@@ -1,8 +1,8 @@
-package ui.gui;
+package ui.gui.exercise;
 
-import exceptions.EmptyWorkoutList;
+import exceptions.EmptyExerciseList;
+import model.Exercise;
 import model.Workout;
-import model.WorkoutCollection;
 
 import javax.swing.*;
 import java.awt.*;
@@ -11,17 +11,17 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
-public class ViewWorkoutsUI extends JFrame {
+public class ViewExercisesUi extends JFrame {
     private JPanel viewPanel;
     private JButton closeButton;
     private JScrollPane scrollPane;
     private JPanel labelPanel;
 
-    WorkoutCollection collection;
-    HomeUi homeFrame;
+    Workout workout;
+    ExerciseUi homeFrame;
 
-    public ViewWorkoutsUI(WorkoutCollection collection, HomeUi homeFrame) {
-        this.collection = collection;
+    public ViewExercisesUi(Workout workout, ExerciseUi homeFrame) {
+        this.workout = workout;
         this.homeFrame = homeFrame;
         setContentPane(viewPanel);
         setSize(500, 500);
@@ -35,8 +35,8 @@ public class ViewWorkoutsUI extends JFrame {
 
     public void addLabels() {
         try {
-            for (Workout workout : collection.getWorkouts()) {
-                JLabel label = new JLabel(workout.getWorkoutName() + " Rating: " + workout.getRating());
+            for (Exercise exercise : workout.getExercises()) {
+                JLabel label = new JLabel(exercise.getExerciseName());
                 label.addMouseListener(new MouseAdapter() {
                     @Override
                     public void mouseClicked(MouseEvent e) {
@@ -52,7 +52,7 @@ public class ViewWorkoutsUI extends JFrame {
             scrollPane.repaint();
 
 
-        } catch (EmptyWorkoutList e) {
+        } catch (EmptyExerciseList e) {
             //
         }
     }

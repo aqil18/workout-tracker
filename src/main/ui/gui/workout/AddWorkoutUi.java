@@ -1,4 +1,4 @@
-package ui.gui;
+package ui.gui.workout;
 
 import model.Workout;
 import model.WorkoutCollection;
@@ -15,13 +15,13 @@ public class AddWorkoutUi extends JFrame {
     SpinnerNumberModel spinner = (SpinnerNumberModel) ratingSpinner.getModel();
 
     WorkoutCollection collection;
-    HomeUi homeFrame;
+    WorkoutUi homeFrame;
 
     private static final int MAX_RATING = 5;
     private static final int MIN_RATING = 0;
     private static final int STEP_RATING = 1;
 
-    public AddWorkoutUi(WorkoutCollection collection, HomeUi homeFrame) {
+    public AddWorkoutUi(WorkoutCollection collection, WorkoutUi homeFrame) {
         this.collection = collection;
         this.homeFrame = homeFrame;
         setContentPane(addPanel);

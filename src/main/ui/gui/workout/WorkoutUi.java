@@ -1,15 +1,14 @@
-package ui.gui;
+package ui.gui.workout;
 
 
 
-import model.WorkoutCollection;
 import ui.GuiWorkoutTracker;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class HomeUi extends JFrame {
+public class WorkoutUi extends JFrame {
     private JPanel homePanel;
     private JButton addButton;
     private JButton viewButton;
@@ -17,16 +16,17 @@ public class HomeUi extends JFrame {
     private JButton saveButton;
     private JButton deleteButton;
     private JLabel titleLabel;
+    private JButton editButton;
 
     private GuiWorkoutTracker gui;
-    private HomeUi currentFrame;
+    private WorkoutUi currentFrame;
 
 
 
 
 
 
-    public HomeUi(GuiWorkoutTracker gui) {
+    public WorkoutUi(GuiWorkoutTracker gui) {
         this.gui = gui;
         this.currentFrame = this;
 
@@ -43,11 +43,13 @@ public class HomeUi extends JFrame {
 
         addListener();
         deleteListener();
+        editListener();
         viewListener();
         loadListener();
         saveListener();
 
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
 
 
     }
@@ -70,6 +72,17 @@ public class HomeUi extends JFrame {
                 DeleteWorkoutUi deleteWorkoutUi = new DeleteWorkoutUi(gui.getCollection(), currentFrame);
                 setVisible(false); // Hide the current frame
                 deleteWorkoutUi.setVisible(true); // Show the new frame
+            }
+        });
+    }
+
+    public void editListener() {
+        editButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                EditWorkoutUi editWorkoutUi = new EditWorkoutUi(gui.getCollection(), currentFrame);
+                setVisible(false); // Hide the current frame
+                editWorkoutUi.setVisible(true); // Show the new frame
             }
         });
     }

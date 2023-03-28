@@ -1,8 +1,9 @@
-package ui.gui;
+package ui.gui.workout;
 
 import exceptions.EmptyWorkoutList;
 import model.Workout;
 import model.WorkoutCollection;
+import ui.gui.exercise.ExerciseUi;
 
 import javax.swing.*;
 import java.awt.*;
@@ -11,9 +12,9 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
-public class DeleteWorkoutUi extends JFrame {
+public class EditWorkoutUi extends JFrame {
 
-    private JButton deleteButton;
+    private JButton editButton;
     private JScrollPane scrollPane;
     private JPanel labelPanel;
     private JPanel viewPanel;
@@ -21,9 +22,9 @@ public class DeleteWorkoutUi extends JFrame {
 
 
     WorkoutCollection collection;
-    HomeUi homeFrame;
+    WorkoutUi homeFrame;
 
-    public DeleteWorkoutUi(WorkoutCollection collection, HomeUi homeFrame) {
+    public EditWorkoutUi(WorkoutCollection collection, WorkoutUi homeFrame) {
 
         this.collection = collection;
         this.homeFrame = homeFrame;
@@ -50,9 +51,9 @@ public class DeleteWorkoutUi extends JFrame {
                     @Override
                     public void mouseClicked(MouseEvent e) {
                         System.out.println(label.getText());
-                        deleteButton.setText("Delete " + workout.getWorkoutName());
+                        editButton.setText("Edit " + workout.getWorkoutName());
 
-                        deleteListener(workout);
+                        editListener(workout);
                     }
                 });
                 label.setPreferredSize(new Dimension(100, 50)); // Sets the preferred size to 100x50 pixels
@@ -69,13 +70,13 @@ public class DeleteWorkoutUi extends JFrame {
         }
     }
 
-    public void deleteListener(Workout workout) {
-        deleteButton.addActionListener(new ActionListener() {
+    public void editListener(Workout workout) {
+        editButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                collection.deleteWorkout(workout);
+                ExerciseUi exerciseUi = new ExerciseUi(workout, homeFrame);
                 dispose();
-                homeFrame.setVisible(true);
+                exerciseUi.setVisible(true);
 
             }
         });
