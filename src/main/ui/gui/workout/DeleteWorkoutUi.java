@@ -11,6 +11,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
+//GUI for deleting a workout.
 public class DeleteWorkoutUi extends JFrame {
 
     private JButton deleteButton;
@@ -23,6 +24,7 @@ public class DeleteWorkoutUi extends JFrame {
     WorkoutCollection collection;
     WorkoutUi homeFrame;
 
+    //EFFECTS - Sets up the DeleteWorkout GUI.
     public DeleteWorkoutUi(WorkoutCollection collection, WorkoutUi homeFrame) {
 
         this.collection = collection;
@@ -41,7 +43,7 @@ public class DeleteWorkoutUi extends JFrame {
 
     }
 
-
+    //EFFECTS - Adds all workouts as JLabels onto the GUI
     public void addLabels() {
         try {
             for (Workout workout : collection.getWorkouts()) {
@@ -49,26 +51,21 @@ public class DeleteWorkoutUi extends JFrame {
                 label.addMouseListener(new MouseAdapter() {
                     @Override
                     public void mouseClicked(MouseEvent e) {
-                        System.out.println(label.getText());
                         deleteButton.setText("Delete " + workout.getWorkoutName());
-
                         deleteListener(workout);
                     }
                 });
                 label.setPreferredSize(new Dimension(100, 50)); // Sets the preferred size to 100x50 pixels
                 labelPanel.add(label);
-
-
             }
             scrollPane.revalidate();
             scrollPane.repaint();
-
-
         } catch (EmptyWorkoutList e) {
             //
         }
     }
 
+    //EFFECTS - Creates a listener for the delete button in the GUI.
     public void deleteListener(Workout workout) {
         deleteButton.addActionListener(new ActionListener() {
             @Override
@@ -81,6 +78,7 @@ public class DeleteWorkoutUi extends JFrame {
         });
     }
 
+    //EFFECTS - Creates a listener for the close button in the GUI.
     public void closeListener() {
         closeButton.addActionListener(new ActionListener() {
             @Override

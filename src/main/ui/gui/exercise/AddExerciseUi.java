@@ -10,6 +10,7 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+//GUI for adding an exercise.
 public class AddExerciseUi extends JFrame {
     private JPanel addExercisePanel;
     private JTextField nameField;
@@ -31,7 +32,7 @@ public class AddExerciseUi extends JFrame {
 
     private static final int MIN_INPUT = 0;
 
-
+    //EFFECTS - Sets up the AddExercise GUI.
     public AddExerciseUi(Workout workout, ExerciseUi homeFrame) {
         this.workout = workout;
         this.homeFrame = homeFrame;
@@ -45,6 +46,9 @@ public class AddExerciseUi extends JFrame {
 
         buttonGroup.add(weightedButton);
         buttonGroup.add(timedButton);
+        weightSpinner.setVisible(false);
+        repsSpinner.setVisible(false);
+        timeSpinner.setVisible(false);
 
         addListener();
         weightedListener();
@@ -52,11 +56,9 @@ public class AddExerciseUi extends JFrame {
 
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-
-
     }
 
-
+    //EFFECTS - Adds all exercises as JLabels onto the GUI
     public void addListener() {
         addButton.addActionListener(new ActionListener() {
             @Override
@@ -82,21 +84,28 @@ public class AddExerciseUi extends JFrame {
         });
     }
 
+    //EFFECTS - Creates a listener for the weighted radio button in the GUI and makes the corresponding text fields
+    //          visible.
     public void weightedListener() {
         weightedButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                weightSpinner.setVisible(!isVisible());
-                repsSpinner.setVisible(!isVisible());
+                weightSpinner.setVisible(true);
+                repsSpinner.setVisible(true);
+                timeSpinner.setVisible(false);
             }
         });
     }
 
+    //EFFECTS - Creates a listener for the timed radio button in the GUI and makes the corresponding text fields
+    //          visible.
     public void timedListener() {
         timedButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                timeSpinner.setVisible(!isVisible());
+                weightSpinner.setVisible(false);
+                repsSpinner.setVisible(false);
+                timeSpinner.setVisible(true);
             }
         });
     }

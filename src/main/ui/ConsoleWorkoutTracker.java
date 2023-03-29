@@ -9,7 +9,7 @@ import model.*;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-// Workout Tracker application
+// Console Workout Tracker application
 public class ConsoleWorkoutTracker extends WorkoutTracker {
 
     private Scanner input = new Scanner(System.in);

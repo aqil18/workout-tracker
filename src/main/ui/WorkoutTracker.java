@@ -8,6 +8,8 @@ import persistence.JsonWriter;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 
+
+//The Workout Tracker
 public class WorkoutTracker {
 
     private static final  String JSON_STORE = "./data/workoutCollection.json";

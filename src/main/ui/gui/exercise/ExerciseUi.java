@@ -7,6 +7,8 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+
+//Main GUI for exercises.
 public class ExerciseUi extends JFrame {
     private JButton closeButton;
     private JButton addButton;
@@ -18,6 +20,7 @@ public class ExerciseUi extends JFrame {
     private ExerciseUi currentFrame;
     private WorkoutUi homeFrame;
 
+    //EFFECTS - Sets up the main Exercise GUI
     public ExerciseUi(Workout workout, WorkoutUi homeFrame) {
         this.currentFrame = this;
         this.workout = workout;
@@ -33,34 +36,9 @@ public class ExerciseUi extends JFrame {
         viewListener();
         closeListener();
 
-
-
-
     }
 
-    public void deleteListener() {
-        deleteButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                DeleteExerciseUi deleteExerciseUi = new DeleteExerciseUi(workout, currentFrame);
-                setVisible(false); // Hide the current frame
-                deleteExerciseUi.setVisible(true); // Show the new frame
-            }
-        });
-    }
-
-    public void viewListener() {
-        viewButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                ViewExercisesUi viewExercisesUi = new ViewExercisesUi(workout, currentFrame);
-                setVisible(false); // Hide the current frame
-                viewExercisesUi.setVisible(true); // Show the new frame
-            }
-        });
-    }
-
-
+    //EFFECTS - Creates a listener for the add button and creates a new AddExerciseUi upon click.
     public void addListener() {
         addButton.addActionListener(new ActionListener() {
             @Override
@@ -72,6 +50,32 @@ public class ExerciseUi extends JFrame {
         });
     }
 
+    //EFFECTS - Creates a listener for the delete button and creates a new DeleteExerciseUi upon click.
+    public void deleteListener() {
+        deleteButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                DeleteExerciseUi deleteExerciseUi = new DeleteExerciseUi(workout, currentFrame);
+                setVisible(false); // Hide the current frame
+                deleteExerciseUi.setVisible(true); // Show the new frame
+            }
+        });
+    }
+
+
+    //EFFECTS - Creates a listener for the view button and creates a new ViewExercisesUi upon click.
+    public void viewListener() {
+        viewButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                ViewExercisesUi viewExercisesUi = new ViewExercisesUi(workout, currentFrame);
+                setVisible(false); // Hide the current frame
+                viewExercisesUi.setVisible(true); // Show the new frame
+            }
+        });
+    }
+
+    //EFFECTS - Creates a listener for the close button in the GUI.
     public void closeListener() {
         closeButton.addActionListener(new ActionListener() {
             @Override

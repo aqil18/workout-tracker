@@ -30,6 +30,16 @@ gym to keep fueling them to invest in themselves.
 - As a user, I want to be given the option to save all my workouts and respective exercises upon closing.
 - As a user, I want to be given the option to load all my saved workouts and respective exercises upon opening.
 
+### Instructions for Grader
+- You can generate workouts and add it to the collection by clicking the add workout button and entering the details.
+- You can delete workouts by clicking on the delete button and selecting a workout by clicking on the label.
+- You can locate my visual component in the home page of the Workout Tracker as a banner at the top.
+- You can save the state of my application by clicking on the save workouts button in the home page.
+- You can reload the state of my application by clicking on the load workouts button in the home page.
+
+
+
+
 ### Attributions
 - The UI in this application draws inspiration from how the TellerApp given to us built its UI.
 - The data persistence feature is modeled based on the JsonSerialization project given to us. 
