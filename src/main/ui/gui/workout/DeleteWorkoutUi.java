@@ -26,21 +26,18 @@ public class DeleteWorkoutUi extends JFrame {
 
     //EFFECTS - Sets up the DeleteWorkout GUI.
     public DeleteWorkoutUi(WorkoutCollection collection, WorkoutUi homeFrame) {
-
         this.collection = collection;
         this.homeFrame = homeFrame;
 
-
-
         setContentPane(viewPanel);
         setSize(500, 500);
-        labelPanel.setLayout(new GridLayout(0, 1)); // Sets the layout to a vertical grid
-        scrollPane.setViewportView(labelPanel); // Adds the panel as the viewport of the scroll pane
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+        labelPanel.setLayout(new GridLayout(0, 1));
+        scrollPane.setViewportView(labelPanel);
 
         addLabels();
         closeListener();
-
-
     }
 
     //EFFECTS - Adds all workouts as JLabels onto the GUI
@@ -55,7 +52,7 @@ public class DeleteWorkoutUi extends JFrame {
                         deleteListener(workout);
                     }
                 });
-                label.setPreferredSize(new Dimension(100, 50)); // Sets the preferred size to 100x50 pixels
+                label.setPreferredSize(new Dimension(100, 50));
                 labelPanel.add(label);
             }
             scrollPane.revalidate();
@@ -73,7 +70,6 @@ public class DeleteWorkoutUi extends JFrame {
                 collection.deleteWorkout(workout);
                 dispose();
                 homeFrame.setVisible(true);
-
             }
         });
     }

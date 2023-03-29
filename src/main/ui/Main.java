@@ -6,6 +6,6 @@ public class Main  {
     public static void main(String[] args) {
         //new ConsoleWorkoutTracker();
         new GuiWorkoutTracker();
-
+        //Comment and uncomment for the Ui needed.
     }
 }

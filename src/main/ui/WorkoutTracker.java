@@ -10,7 +10,7 @@ import java.io.IOException;
 
 
 //The Workout Tracker
-public class WorkoutTracker {
+public abstract class WorkoutTracker {
 
     private static final  String JSON_STORE = "./data/workoutCollection.json";
     protected WorkoutCollection collection;
@@ -18,9 +18,6 @@ public class WorkoutTracker {
     protected JsonWriter jsonWriter;
 
 
-    public WorkoutTracker() {
-
-    }
 
     // EFFECTS: saves the workout collection to file
     public void saveWorkoutCollection() {

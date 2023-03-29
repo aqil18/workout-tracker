@@ -28,14 +28,14 @@ public class ExerciseUi extends JFrame {
 
 
         setContentPane(homePanel);
-        setSize(1000, 1000);
+        setSize(900, 750);
         setVisible(true);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         addListener();
         deleteListener();
         viewListener();
         closeListener();
-
     }
 
     //EFFECTS - Creates a listener for the add button and creates a new AddExerciseUi upon click.
@@ -44,8 +44,8 @@ public class ExerciseUi extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 AddExerciseUi addExerciseUi = new AddExerciseUi(workout, currentFrame);
-                setVisible(false); // Hide the current frame
-                addExerciseUi.setVisible(true); // Show the new frame
+                setVisible(false);
+                addExerciseUi.setVisible(true);
             }
         });
     }
@@ -56,8 +56,8 @@ public class ExerciseUi extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 DeleteExerciseUi deleteExerciseUi = new DeleteExerciseUi(workout, currentFrame);
-                setVisible(false); // Hide the current frame
-                deleteExerciseUi.setVisible(true); // Show the new frame
+                setVisible(false);
+                deleteExerciseUi.setVisible(true);
             }
         });
     }
@@ -69,8 +69,8 @@ public class ExerciseUi extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 ViewExercisesUi viewExercisesUi = new ViewExercisesUi(workout, currentFrame);
-                setVisible(false); // Hide the current frame
-                viewExercisesUi.setVisible(true); // Show the new frame
+                setVisible(false);
+                viewExercisesUi.setVisible(true);
             }
         });
     }

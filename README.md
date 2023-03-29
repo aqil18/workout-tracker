@@ -32,14 +32,17 @@ gym to keep fueling them to invest in themselves.
 
 ### Instructions for Grader
 - You can generate workouts and add it to the collection by clicking the add workout button and entering the details.
-- You can delete workouts by clicking on the delete button and selecting a workout by clicking on the label.
+  and clicking the add button again.
+- You can delete workouts by clicking on the delete button and selecting a workout by clicking on its label and clicking the delete button again. 
 - You can locate my visual component in the home page of the Workout Tracker as a banner at the top.
 - You can save the state of my application by clicking on the save workouts button in the home page.
 - You can reload the state of my application by clicking on the load workouts button in the home page.
-
-
+- ***Note:*** to switch between the GUI and Console UI, uncomment corresponding code in Main.java
 
 
 ### Attributions
 - The UI in this application draws inspiration from how the TellerApp given to us built its UI.
-- The data persistence feature is modeled based on the JsonSerialization project given to us. 
+- The data persistence feature is modeled based on the JsonSerialization project given to us.
+- The YouTube videos I watched to learn how to use Intellij's swing UI designer:
+    - [https://www.youtube.com/watch?v=-SmNpKskfJc&t=633s](https://www.youtube.com/watch?v=-SmNpKskfJc&t=633s)
+    - [https://www.youtube.com/watch?v=nIQatIpL_GE&t=462s](https://www.youtube.com/watch?v=nIQatIpL_GE&t=462s) 

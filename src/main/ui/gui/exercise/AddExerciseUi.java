@@ -25,8 +25,6 @@ public class AddExerciseUi extends JFrame {
     private JButton addButton;
     ButtonGroup buttonGroup = new ButtonGroup();
 
-
-
     Workout workout;
     ExerciseUi homeFrame;
 
@@ -36,9 +34,10 @@ public class AddExerciseUi extends JFrame {
     public AddExerciseUi(Workout workout, ExerciseUi homeFrame) {
         this.workout = workout;
         this.homeFrame = homeFrame;
+
         setContentPane(addExercisePanel);
         setSize(500, 500);
-
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         reps.setMinimum(MIN_INPUT);
         weight.setMinimum(MIN_INPUT);
@@ -55,7 +54,6 @@ public class AddExerciseUi extends JFrame {
         timedListener();
 
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
     }
 
     //EFFECTS - Adds all exercises as JLabels onto the GUI

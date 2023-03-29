@@ -29,16 +29,14 @@ public class WorkoutUi extends JFrame {
         this.gui = gui;
         this.currentFrame = this;
 
-
         ImageIcon icon = new ImageIcon("data/The Workout Tracker.jpg");
         titleLabel.setIcon(icon);
         titleLabel.setText("");
 
-
-
         setContentPane(homePanel);
-        setSize(1000, 1000);
+        setSize(900, 750);
         setVisible(true);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         addListener();
         deleteListener();
@@ -48,9 +46,6 @@ public class WorkoutUi extends JFrame {
         saveListener();
 
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
-
-
     }
 
     //EFFECTS - Creates a listener for the add button and creates a new AddWorkoutUi upon click.
@@ -59,8 +54,8 @@ public class WorkoutUi extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 AddWorkoutUi addWorkoutFrame = new AddWorkoutUi(gui.getCollection(), currentFrame);
-                setVisible(false); // Hide the current frame
-                addWorkoutFrame.setVisible(true); // Show the new frame
+                setVisible(false);
+                addWorkoutFrame.setVisible(true);
             }
         });
     }
@@ -71,8 +66,8 @@ public class WorkoutUi extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 DeleteWorkoutUi deleteWorkoutUi = new DeleteWorkoutUi(gui.getCollection(), currentFrame);
-                setVisible(false); // Hide the current frame
-                deleteWorkoutUi.setVisible(true); // Show the new frame
+                setVisible(false);
+                deleteWorkoutUi.setVisible(true);
             }
         });
     }
@@ -83,8 +78,8 @@ public class WorkoutUi extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 EditWorkoutUi editWorkoutUi = new EditWorkoutUi(gui.getCollection(), currentFrame);
-                setVisible(false); // Hide the current frame
-                editWorkoutUi.setVisible(true); // Show the new frame
+                setVisible(false);
+                editWorkoutUi.setVisible(true);
             }
         });
     }
@@ -95,8 +90,8 @@ public class WorkoutUi extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 ViewWorkoutsUI viewWorkoutsFrame = new ViewWorkoutsUI(gui.getCollection(), currentFrame);
-                setVisible(false); // Hide the current frame
-                viewWorkoutsFrame.setVisible(true); // Show the new frame
+                setVisible(false);
+                viewWorkoutsFrame.setVisible(true);
             }
         });
     }

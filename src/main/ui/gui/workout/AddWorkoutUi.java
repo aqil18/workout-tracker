@@ -26,17 +26,16 @@ public class AddWorkoutUi extends JFrame {
     public AddWorkoutUi(WorkoutCollection collection, WorkoutUi homeFrame) {
         this.collection = collection;
         this.homeFrame = homeFrame;
+
         setContentPane(addPanel);
         setSize(500, 500);
-
-
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         spinner.setMinimum(MIN_RATING);
         spinner.setMaximum(MAX_RATING);
         spinner.setStepSize(STEP_RATING);
 
         addListener();
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
 
     //EFFECTS - Creates a listener for the add button in the GUI.

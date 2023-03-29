@@ -1,15 +1,9 @@
 {"workouts": [
     {
-        "exercises": [
-            {
-                "name": "fdf",
-                "time": 11111
-            },
-            {
-                "name": "yukgh",
-                "time": 5545
-            }
-        ],
+        "exercises": [{
+            "name": "yukgh",
+            "time": 5545
+        }],
         "name": "shaheer",
         "rating": 1
     },
