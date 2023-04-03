@@ -26,6 +26,11 @@ public class Workout implements Writable {
     //EFFECTS - Adds given exercise to the workout list
     public void addExercise(Exercise exercise) {
         this.exercises.add(exercise);
+        EventLog.getInstance().logEvent(new Event("Added the "
+                + exercise.getExerciseName()
+                + " exercise to the "
+                + name
+                + " workout."));
     }
 
 
@@ -33,6 +38,11 @@ public class Workout implements Writable {
     //EFFECTS - Deletes all instances of the given exercise from the workout list
     public void deleteExercise(Exercise exercise) {
         this.exercises.removeAll(Collections.singleton(exercise));
+        EventLog.getInstance().logEvent(new Event("Deleted "
+                + exercise.getExerciseName()
+                + " exercise from the "
+                + name
+                + " workout."));
     }
 
     //REQUIRES - Non-negative integer rating

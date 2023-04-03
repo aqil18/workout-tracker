@@ -22,12 +22,18 @@ public class WorkoutCollection implements Writable {
     //EFFECTS - Adds given workout to the workout collection
     public void addWorkout(Workout workout) {
         this.workouts.add(workout);
+        EventLog.getInstance().logEvent(new Event("Added the "
+                + workout.getWorkoutName()
+                + " workout to the collection."));
     }
 
     //MODIFIES - This
     //EFFECTS - Deletes all instances of the given workout from the workout collection
     public void deleteWorkout(Workout workout) {
         this.workouts.removeAll(Collections.singleton(workout));
+        EventLog.getInstance().logEvent(new Event("Deleted the "
+                + workout.getWorkoutName()
+                + " workout from the collection."));
     }
 
     //EFFECTS - Returns all workouts in the workout collection

@@ -2,11 +2,15 @@ package ui.gui.workout;
 
 
 
+import model.Event;
+import model.EventLog;
 import ui.GuiWorkoutTracker;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 
 
 //Main GUI for workouts.
@@ -29,6 +33,8 @@ public class WorkoutUi extends JFrame {
         this.gui = gui;
         this.currentFrame = this;
 
+        EventLog.getInstance().clear();
+
         ImageIcon icon = new ImageIcon("data/The Workout Tracker.jpg");
         titleLabel.setIcon(icon);
         titleLabel.setText("");
@@ -44,8 +50,11 @@ public class WorkoutUi extends JFrame {
         viewListener();
         loadListener();
         saveListener();
+        frameListener();
 
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+
     }
 
     //EFFECTS - Creates a listener for the add button and creates a new AddWorkoutUi upon click.
@@ -112,6 +121,19 @@ public class WorkoutUi extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 gui.saveWorkoutCollection();
+            }
+        });
+    }
+
+
+    public void frameListener() {
+        addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosing(WindowEvent e) {
+                EventLog el = EventLog.getInstance();
+                for (Event next : el) {
+                    System.out.println(next.toString() + "\n");
+                }
             }
         });
     }
