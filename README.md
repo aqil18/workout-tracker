@@ -40,6 +40,53 @@ gym to keep fueling them to invest in themselves.
 - ***Note:*** to switch between the GUI and Console UI, uncomment corresponding code in Main.java
 
 
+### Phase 4: Task 2
+Sample Event Log:
+
+Mon Apr 10 02:17:16 PDT 2023
+Event log cleared.
+
+Mon Apr 10 02:17:27 PDT 2023
+Added the Back workout to the collection.
+
+Mon Apr 10 02:17:48 PDT 2023
+Added the Extensions exercise to the Back workout.
+
+Mon Apr 10 02:18:17 PDT 2023
+Added the Press exercise to the Back workout.
+
+Mon Apr 10 02:18:40 PDT 2023
+Added the Pulldowns exercise to the Back workout.
+
+Mon Apr 10 02:18:48 PDT 2023
+Added the 33 exercise to the Back workout.
+
+Mon Apr 10 02:18:52 PDT 2023
+Deleted 33 exercise from the Back workout.
+
+Mon Apr 10 02:19:01 PDT 2023
+Added the Cardio workout to the collection.
+
+Mon Apr 10 02:19:20 PDT 2023
+Deleted the Cardio workout from the collection.
+
+
+### Phase 4: Task 3
+Looking at my UML diagram I can see that there are many areas of improvement to make it have higher cohesion and lower 
+coupling.
+
+Beginning in my model package, I identified a lot of code duplication between WorkoutCollection,
+Workout and Exercise. This issue with this is if I had to change the implementation of a method I would end up having to do the same 
+to duplicate methods in other classes, making the design prone to more bugs and less cohesive. One way to fix this potentially 
+is by using a composite pattern and refactor to create an "Activity" interface that can be implemented by all 3 classes and make 
+the WorkoutCollection the composite in this case. This would create a hierarchical structure that would only need one set of add, delete, 
+view, toJson and other methods.
+
+In my gui package, there is also an absurd amount of code duplication that stems from having multiple guis classes with same format.
+All classes related to viewing, editing and deleting have the same format and very similar gui's however 5 of the same classes had to
+be duplicated. To overcome this, I would look into refactoring out 1 single "ViewActivity" class that will display the corresponding button based
+on use case and link it to the corresponding JFrame that it should lead to. 
+
 ### Attributions
 - The UI in this application draws inspiration from how the TellerApp given to us built its UI.
 - The data persistence feature is modeled based on the JsonSerialization project given to us.

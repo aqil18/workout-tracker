@@ -1,21 +1,21 @@
-{"workouts": [
-    {
-        "exercises": [{
-            "reps": 221,
-            "name": "sdsds",
-            "weight": 11
-        }],
-        "name": "shaheer",
-        "rating": 1
-    },
-    {
-        "exercises": [],
-        "name": "aaa",
-        "rating": 2
-    },
-    {
-        "exercises": [],
-        "name": "ddd",
-        "rating": 1
-    }
-]}
+{"workouts": [{
+    "exercises": [
+        {
+            "reps": 12,
+            "name": "Extensions",
+            "weight": 40
+        },
+        {
+            "reps": 10,
+            "name": "Press",
+            "weight": 50
+        },
+        {
+            "reps": 10,
+            "name": "Pulldowns",
+            "weight": 60
+        }
+    ],
+    "name": "Back",
+    "rating": 5
+}]}
