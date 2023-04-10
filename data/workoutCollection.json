@@ -1,8 +1,9 @@
 {"workouts": [
     {
         "exercises": [{
-            "name": "yukgh",
-            "time": 5545
+            "reps": 221,
+            "name": "sdsds",
+            "weight": 11
         }],
         "name": "shaheer",
         "rating": 1
@@ -11,5 +12,10 @@
         "exercises": [],
         "name": "aaa",
         "rating": 2
+    },
+    {
+        "exercises": [],
+        "name": "ddd",
+        "rating": 1
     }
 ]}
