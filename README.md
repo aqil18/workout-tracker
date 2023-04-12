@@ -93,3 +93,4 @@ on use case and link it to the corresponding JFrame that it should lead to.
 - The YouTube videos I watched to learn how to use Intellij's swing UI designer:
     - [https://www.youtube.com/watch?v=-SmNpKskfJc&t=633s](https://www.youtube.com/watch?v=-SmNpKskfJc&t=633s)
     - [https://www.youtube.com/watch?v=nIQatIpL_GE&t=462s](https://www.youtube.com/watch?v=nIQatIpL_GE&t=462s) 
+- The functionality for EventLog is adapted from the AlarmSystem project given to us.
